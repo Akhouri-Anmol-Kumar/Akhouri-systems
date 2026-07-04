@@ -163,6 +163,77 @@ footer{padding:36px 48px;border-top:1px solid var(--border);display:flex;align-i
   .product-grid{grid-template-columns:1fr 1fr;gap:8px;}
   .product-btn-name{font-size:20px;letter-spacing:2px;}
 }
+
+/* 3D Visual Enhancements */
+.product-btn {
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(.34,1.56,.64,1), box-shadow 0.4s, border-color 0.3s !important;
+}
+.product-btn:hover {
+    transform: translateY(-8px) rotateX(5deg) scale(1.03) !important;
+    box-shadow: 0 24px 60px rgba(0,0,0,.8), 0 0 40px var(--gold-glow), 0 12px 20px rgba(0,0,0,.5) !important;
+}
+.feature-card {
+    transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s, border-color 0.3s !important;
+}
+.feature-card:hover {
+    transform: translateY(-6px) rotateX(3deg) !important;
+    box-shadow: 0 16px 40px rgba(0,0,0,.6), 0 0 20px var(--gold-glow2) !important;
+    border-color: var(--gold-dim) !important;
+}
+.hero-logo-wrap img {
+    transition: transform 0.5s cubic-bezier(.34,1.56,.64,1), box-shadow 0.5s !important;
+}
+.hero-logo-wrap img:hover {
+    transform: scale(1.1) rotateY(10deg) !important;
+    box-shadow: 0 0 60px var(--gold-glow), 0 0 120px var(--gold-glow2), 0 20px 40px rgba(0,0,0,.5) !important;
+}
+.download-btn {
+    transition: all 0.3s cubic-bezier(.34,1.56,.64,1) !important;
+    position: relative;
+    overflow: hidden;
+}
+.download-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: rotate(45deg) translateX(-100%);
+    transition: transform 0.6s ease;
+}
+.download-btn:hover::before {
+    transform: rotate(45deg) translateX(100%);
+}
+.download-btn:hover {
+    transform: translateY(-4px) scale(1.05) !important;
+    box-shadow: 0 12px 30px rgba(201,168,76,.4) !important;
+}
+.nav-links a {
+    transition: all 0.3s ease !important;
+}
+.nav-links a:hover {
+    transform: translateY(-2px) !important;
+    text-shadow: 0 0 10px var(--gold) !important;
+}
+/* Smooth scroll behavior */
+* { scroll-behavior: smooth; }
+/* Better text rendering */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+/* 3D card perspective */
+.product-grid {
+    perspective: 1000px;
+}
+.features-grid {
+    perspective: 800px;
+}
+
 </style>
 </head>
 <body>
@@ -291,7 +362,7 @@ footer{padding:36px 48px;border-top:1px solid var(--border);display:flex;align-i
       <div class="feature-card"><div class="feature-icon">🖼</div><div class="feature-name">Meme Canvas</div><div class="feature-desc">Create memes directly inside your text editor. Because why not.</div></div>
       <div class="feature-card"><div class="feature-icon">💾</div><div class="feature-name">Auto Save</div><div class="feature-desc">Never lose your work. ANOTE saves automatically so you don't have to think about it.</div></div>
     </div>
-    <button class="download-btn disabled">Coming Soon to GitHub ↗</button>
+    <a class="download-btn" href="https://github.com/Akhouri-Anmol-Kumar/ANOTE/releases/download/ANOTE/ANOTE.zip">⬇ Download ANOTE</a>
   </div>
 </section>
 
@@ -329,7 +400,7 @@ footer{padding:36px 48px;border-top:1px solid var(--border);display:flex;align-i
       <div class="feature-card"><div class="feature-icon">⌗</div><div class="feature-name">Batch Processing</div><div class="feature-desc">Process hundreds of images at once. Drop a folder, set your operation, done.</div></div>
       <div class="feature-card"><div class="feature-icon">🖱</div><div class="feature-name">Drag & Drop</div><div class="feature-desc">Drop any image anywhere on the window. APIC figures out what to do next.</div></div>
     </div>
-    <button class="download-btn disabled">Coming Soon to GitHub ↗</button>
+    <a class="download-btn" href="https://github.com/Akhouri-Anmol-Kumar/APIC/releases/download/APIC/APIC.zip">⬇ Download APIC</a>
   </div>
 </section>
 
@@ -447,6 +518,7 @@ async function fetchDownloads() {
       'Akhouri-Anmol-Kumar/ATLOCK',
       'Akhouri-Anmol-Kumar/ACALCU-v2.0',
       'Akhouri-Anmol-Kumar/APIC',
+      'Akhouri-Anmol-Kumar/ANOTE',
     ];
     let total = 0;
     for(const repo of repos) {
