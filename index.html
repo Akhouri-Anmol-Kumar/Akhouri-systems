@@ -414,6 +414,140 @@ body {
     }
 }
 
+
+/* Support Button */
+.support-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    background: transparent;
+    border: 1px solid var(--gold-dim);
+    border-radius: 100px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold-dim);
+    cursor: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    margin-left: 12px;
+}
+.support-btn:hover {
+    background: var(--gold-glow);
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-2px);
+}
+
+/* Support Modal */
+.support-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+}
+.support-modal-overlay.active {
+    display: flex;
+}
+.support-modal {
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.8), 0 0 40px var(--gold-glow2);
+}
+.support-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 20px;
+    cursor: none;
+    transition: color 0.2s;
+}
+.support-modal-close:hover { color: var(--text); }
+.support-modal-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+}
+.support-modal-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 8px;
+}
+.support-modal-note {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    line-height: 1.8;
+    margin-bottom: 24px;
+    letter-spacing: 0.3px;
+}
+.support-upi-box {
+    background: var(--surface);
+    border: 1px solid var(--gold-dim);
+    border-radius: 12px;
+    padding: 16px 24px;
+    margin-bottom: 12px;
+    position: relative;
+}
+.support-upi-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--gold-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+.support-upi-id {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 3px;
+    color: var(--gold);
+}
+.support-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    padding: 6px 16px;
+    background: var(--gold);
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: none;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+}
+.support-copy-btn:hover { background: #e8c96a; transform: translateY(-1px); }
+.support-amount-note {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 16px;
+    letter-spacing: 0.5px;
+}
+
+@media(max-width:768px) {
+    .support-btn { margin-left: 0; margin-top: 8px; font-size: 9px; }
+}
+
 </style>
 </head>
 <body>
@@ -432,6 +566,7 @@ body {
     <a href="#" onclick="showProduct('acalcu');return false;">ACALCU</a>
     <a href="#" onclick="showProduct('apic');return false;">APIC</a>
   </div>
+  <button class="support-btn" onclick="openSupport()">☕ Support</button>
   <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </button>
@@ -805,5 +940,54 @@ document.querySelectorAll('.nav-links a').forEach(a=>{
   a.addEventListener('click',e=>e.preventDefault());
 });
 </script>
+
+<!-- Support Modal -->
+<div class="support-modal-overlay" id="supportModal">
+  <div class="support-modal">
+    <button class="support-modal-close" onclick="closeSupport()">✕</button>
+    <div class="support-modal-icon">☕</div>
+    <h2 class="support-modal-title">SUPPORT AKHOURI</h2>
+    <p class="support-modal-note">
+      Building software solo takes more than just code — it takes time, 
+      late nights, and a lot of determination.<br/><br/>
+      If my work has helped you or you simply believe in what 
+      Akhouri Systems is building — your support means everything. 
+      No amount is too small.
+    </p>
+    <div class="support-upi-box">
+      <p class="support-upi-label">UPI ID</p>
+      <p class="support-upi-id" id="upiId">7633003470@fam</p>
+      <button class="support-copy-btn" onclick="copyUPI()">
+        📋 Copy UPI ID
+      </button>
+    </div>
+    <p class="support-amount-note">
+      Send any amount you wish — every rupee helps. 🖤<br/>
+      <span style="color:var(--gold-dim);font-size:9px;">
+        Open any UPI app → Pay → Paste ID
+      </span>
+    </p>
+  </div>
+</div>
+
+<script>
+function openSupport() {
+    document.getElementById('supportModal').classList.add('active');
+}
+function closeSupport() {
+    document.getElementById('supportModal').classList.remove('active');
+}
+document.getElementById('supportModal').addEventListener('click', function(e) {
+    if(e.target === this) closeSupport();
+});
+function copyUPI() {
+    navigator.clipboard.writeText('7633003470@fam').then(() => {
+        const btn = document.querySelector('.support-copy-btn');
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => btn.textContent = '📋 Copy UPI ID', 2000);
+    });
+}
+</script>
+
 </body>
 </html>
