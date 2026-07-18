@@ -866,33 +866,47 @@ document.querySelectorAll('.magnetic-word').forEach(word=>{
 
 // ── GitHub Download Counter ────────────────────────────────────────────────
 async function fetchDownloads() {
-  try {
-    const repos = [
-      'Akhouri-Anmol-Kumar/ATLOCK',
-      'Akhouri-Anmol-Kumar/ACALCU-v3',
-      'Akhouri-Anmol-Kumar/APIC',
-      'Akhouri-Anmol-Kumar/ANOTE',
-    ];
-    let total = 0;
-    for(const repo of repos) {
-      const res = await fetch(`https://api.github.com/repos/${repo}/releases`);
+  const repos = [
+    'Akhouri-Anmol-Kumar/ATLOCK',
+    'Akhouri-Anmol-Kumar/ACALCU-v3',
+    'Akhouri-Anmol-Kumar/APIC',
+    'Akhouri-Anmol-Kumar/ANOTE',
+  ];
+  let total = 0;
+  let gotAtLeastOne = false;
+
+  // Fetch each repo independently so one failure/rate-limit doesn't
+  // hide the whole counter — just skips that repo's contribution.
+  await Promise.all(repos.map(async (repo) => {
+    try {
+      const res = await fetch(`https://api.github.com/repos/${repo}/releases`, {
+        cache: 'no-store'          // never serve a stale cached response
+      });
+      if (!res.ok) return;         // 404 / rate-limited (403) etc. — skip silently
       const data = await res.json();
-      if(Array.isArray(data)) {
+      if (Array.isArray(data)) {
         data.forEach(release => {
           release.assets && release.assets.forEach(asset => {
             total += asset.download_count || 0;
           });
         });
+        gotAtLeastOne = true;
       }
+    } catch (e) {
+      // network error on this one repo — skip it, don't kill the whole counter
     }
-    const el = document.getElementById('dlCount');
-    if(el) el.textContent = total > 0 ? total.toLocaleString() : '0';
-  } catch(e) {
-    const el = document.getElementById('dlCount');
-    if(el) el.parentElement.style.display='none';
+  }));
+
+  const el = document.getElementById('dlCount');
+  if (el && gotAtLeastOne) {
+    el.textContent = total.toLocaleString();
   }
+  // if nothing succeeded (e.g. offline), just leave the last known number showing
 }
+
 fetchDownloads();
+setInterval(fetchDownloads, 2 * 60 * 1000); // auto-refresh every 2 minutes, no reload needed
+
 
 // ── Page transitions ───────────────────────────────────────────────────────
 const transition = document.getElementById('page-transition');
