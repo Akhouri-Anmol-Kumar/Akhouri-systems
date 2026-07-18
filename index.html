@@ -865,47 +865,59 @@ document.querySelectorAll('.magnetic-word').forEach(word=>{
 });
 
 // ── GitHub Download Counter ────────────────────────────────────────────────
-async function fetchDownloads() {
+const DL_CACHE_KEY = 'atlock_dl_total';
+const DL_CACHE_TIME_KEY = 'atlock_dl_total_ts';
+const DL_MIN_REFRESH_MS = 5 * 60 * 1000; // don't hit the API more than once per 5 min
+
+function showDownloads(total) {
+  const el = document.getElementById('dlCount');
+  if (el) el.textContent = total.toLocaleString();
+}
+
+async function fetchDownloads(force = false) {
+  // Show whatever we last knew immediately — no flicker, never shows 0 on load.
+  const cached = localStorage.getItem(DL_CACHE_KEY);
+  const cachedTs = parseInt(localStorage.getItem(DL_CACHE_TIME_KEY) || '0', 10);
+  if (cached) showDownloads(parseInt(cached, 10));
+
+  // Respect a minimum refresh interval to avoid burning GitHub's rate limit.
+  if (!force && Date.now() - cachedTs < DL_MIN_REFRESH_MS) return;
+
   const repos = [
     'Akhouri-Anmol-Kumar/ATLOCK',
     'Akhouri-Anmol-Kumar/ACALCU-v3',
     'Akhouri-Anmol-Kumar/APIC',
     'Akhouri-Anmol-Kumar/ANOTE',
   ];
-  let total = 0;
-  let gotAtLeastOne = false;
 
-  // Fetch each repo independently so one failure/rate-limit doesn't
-  // hide the whole counter — just skips that repo's contribution.
-  await Promise.all(repos.map(async (repo) => {
-    try {
-      const res = await fetch(`https://api.github.com/repos/${repo}/releases`, {
-        cache: 'no-store'          // never serve a stale cached response
-      });
-      if (!res.ok) return;         // 404 / rate-limited (403) etc. — skip silently
+  try {
+    const results = await Promise.all(repos.map(async (repo) => {
+      const res = await fetch(`https://api.github.com/repos/${repo}/releases`, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`${repo} fetch failed: ${res.status}`);
       const data = await res.json();
-      if (Array.isArray(data)) {
-        data.forEach(release => {
-          release.assets && release.assets.forEach(asset => {
-            total += asset.download_count || 0;
-          });
-        });
-        gotAtLeastOne = true;
-      }
-    } catch (e) {
-      // network error on this one repo — skip it, don't kill the whole counter
-    }
-  }));
+      if (!Array.isArray(data)) throw new Error(`${repo} bad response`);
+      let sub = 0;
+      data.forEach(release => {
+        release.assets && release.assets.forEach(asset => { sub += asset.download_count || 0; });
+      });
+      return sub;
+    }));
 
-  const el = document.getElementById('dlCount');
-  if (el && gotAtLeastOne) {
-    el.textContent = total.toLocaleString();
+    // Only trust and store the new total if EVERY repo fetch succeeded —
+    // a partial result (e.g. one repo rate-limited) is worse than showing
+    // the last known-good number, so we simply skip updating on partial failure.
+    const total = results.reduce((a, b) => a + b, 0);
+    localStorage.setItem(DL_CACHE_KEY, String(total));
+    localStorage.setItem(DL_CACHE_TIME_KEY, String(Date.now()));
+    showDownloads(total);
+  } catch (e) {
+    // One or more repos failed (often GitHub's 60/hr unauthenticated rate limit).
+    // Keep showing the last cached value — do nothing further.
   }
-  // if nothing succeeded (e.g. offline), just leave the last known number showing
 }
 
 fetchDownloads();
-setInterval(fetchDownloads, 2 * 60 * 1000); // auto-refresh every 2 minutes, no reload needed
+setInterval(() => fetchDownloads(), DL_MIN_REFRESH_MS); // auto-refresh, rate-limit safe
 
 
 // ── Page transitions ───────────────────────────────────────────────────────
