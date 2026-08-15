@@ -1,22 +1,18 @@
 name: Update Download Counter
-
 # Runs automatically every 6 hours, and can also be triggered manually
 # from the Actions tab on GitHub ("Run workflow" button).
 on:
   schedule:
     - cron: '0 */6 * * *'   # every 6 hours
   workflow_dispatch: {}
-
 permissions:
   contents: write   # needed so this workflow can commit the updated file back
-
 jobs:
   update-counter:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-
       - name: Fetch total downloads across all products
         id: totals
         run: |
@@ -26,26 +22,28 @@ jobs:
             "Akhouri-Anmol-Kumar/APIC"
             "Akhouri-Anmol-Kumar/ANOTE"
           )
-
-          TOTAL=0
+          RAW_TOTAL=0
           for repo in "${REPOS[@]}"; do
             SUM=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
                        "https://api.github.com/repos/$repo/releases" \
                   | jq '[.[].assets[].download_count] | add // 0')
             echo "  $repo => $SUM"
-            TOTAL=$((TOTAL + SUM))
+            RAW_TOTAL=$((RAW_TOTAL + SUM))
           done
-
-          echo "Total downloads: $TOTAL"
+          # Historical baseline offset — restores the 108 downloads lost when
+          # the ATLOCK release asset was replaced. Must match DOWNLOAD_BASELINE_OFFSET
+          # in index.html's client-side script so both stay in sync, and is
+          # applied to the freshly-fetched RAW_TOTAL only (never compounds).
+          DOWNLOAD_BASELINE_OFFSET=108
+          TOTAL=$((RAW_TOTAL + DOWNLOAD_BASELINE_OFFSET))
+          echo "Raw total: $RAW_TOTAL, corrected total: $TOTAL"
           echo "total=$TOTAL" >> "$GITHUB_OUTPUT"
-
-      - name: Update index.html with the real total
+      - name: Update index.html with the corrected total
         run: |
           TOTAL="${{ steps.totals.outputs.total }}"
           # Replace whatever is currently inside <span id="dlCount">...</span>
-          # with the freshly fetched real number.
+          # with the freshly fetched, offset-corrected number.
           sed -i "s/<span id=\"dlCount\">[^<]*<\/span>/<span id=\"dlCount\">${TOTAL}<\/span>/" index.html
-
       - name: Commit and push if the number changed
         run: |
           git config user.name "github-actions[bot]"
