@@ -722,7 +722,7 @@ img{max-width:100%;height:auto;}
   <p class="hero-sub">Every app we build starts with a problem nobody else bothered to solve.</p>
 
   <div class="dl-counter" id="dlCounter">
-    ⬇ <span id="dlCount">564</span> total downloads across all products
+    ⬇ <span id="dlCount">411+</span> total downloads across all products
   </div>
 
   <div class="product-grid">
@@ -1236,6 +1236,14 @@ const DL_CACHE_KEY = 'atlock_dl_total';
 const DL_CACHE_TIME_KEY = 'atlock_dl_total_ts';
 const DL_MIN_REFRESH_MS = 5 * 60 * 1000; // don't hit the API more than once per 5 min
 
+// One-time historical baseline offset.
+// When the ATLOCK release asset was replaced, GitHub reset that asset's
+// download_count, wiping out 108 previously-earned downloads. This constant
+// restores that lost history on top of GitHub's live (raw) total. It is
+// applied exactly once per raw fetch — never applied to an already-offset
+// cached value — so it cannot compound across refreshes.
+const DOWNLOAD_BASELINE_OFFSET = 108;
+
 function showDownloads(total) {
   const el = document.getElementById('dlCount');
   if (el) el.textContent = total.toLocaleString();
@@ -1273,7 +1281,11 @@ async function fetchDownloads(force = false) {
     // Only trust and store the new total if EVERY repo fetch succeeded —
     // a partial result (e.g. one repo rate-limited) is worse than showing
     // the last known-good number, so we simply skip updating on partial failure.
-    const total = results.reduce((a, b) => a + b, 0);
+    const rawTotal = results.reduce((a, b) => a + b, 0);
+    // Apply the baseline offset to the freshly-fetched RAW GitHub sum only.
+    // We never read the offset back out of localStorage and re-add it, so
+    // repeated refreshes cannot stack +108 on top of an already-corrected number.
+    const total = rawTotal + DOWNLOAD_BASELINE_OFFSET;
     localStorage.setItem(DL_CACHE_KEY, String(total));
     localStorage.setItem(DL_CACHE_TIME_KEY, String(Date.now()));
     showDownloads(total);
