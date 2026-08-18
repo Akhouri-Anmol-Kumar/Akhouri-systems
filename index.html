@@ -132,6 +132,32 @@ footer{padding:36px 48px;border-top:1px solid var(--border);display:flex;align-i
 #page-transition{position:fixed;inset:0;background:var(--bg);z-index:500;pointer-events:none;opacity:0;transition:opacity .25s ease;}
 #page-transition.active{opacity:1;pointer-events:all;}
 
+/* Thanks overlay */
+.thanks-overlay{position:fixed;inset:0;background:rgba(8,8,8,.88);backdrop-filter:blur(12px);z-index:600;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s ease;padding:20px;}
+.thanks-overlay.active{opacity:1;pointer-events:all;}
+.thanks-card{position:relative;width:100%;max-width:440px;background:linear-gradient(180deg,#141414,#0c0c0c);border:1px solid var(--border2);border-radius:24px;padding:44px 36px 36px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.7),0 0 60px var(--gold-glow2);transform:translateY(24px) scale(.96);transition:transform .4s cubic-bezier(.34,1.56,.64,1);overflow:hidden;}
+.thanks-overlay.active .thanks-card{transform:translateY(0) scale(1);}
+.thanks-card::before{content:'';position:absolute;top:-60%;left:50%;width:400px;height:400px;background:radial-gradient(circle,var(--gold-glow) 0%,transparent 70%);transform:translateX(-50%);pointer-events:none;animation:pulse-glow 4s ease-in-out infinite;}
+.thanks-close{position:absolute;top:16px;right:18px;background:none;border:none;color:var(--text-muted);font-size:16px;cursor:none;transition:color .2s;z-index:2;}
+.thanks-close:hover{color:var(--gold);}
+.thanks-badge{position:relative;z-index:2;display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;background:var(--surface);border:1px solid var(--gold-dim);font-size:28px;margin-bottom:20px;box-shadow:0 0 0 6px var(--gold-glow2);}
+.thanks-eyebrow{position:relative;z-index:2;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.thanks-title{position:relative;z-index:2;font-family:'Bebas Neue',sans-serif;font-size:38px;letter-spacing:3px;color:var(--text);line-height:1.15;margin-bottom:14px;}
+.thanks-title span{color:var(--gold);}
+.thanks-text{position:relative;z-index:2;font-family:'DM Mono',monospace;font-size:12px;color:var(--text-dim);line-height:1.9;letter-spacing:.4px;margin-bottom:28px;}
+.thanks-progress-wrap{position:relative;z-index:2;margin-bottom:26px;}
+.thanks-progress-bar{height:3px;width:100%;background:var(--surface2);border-radius:10px;overflow:hidden;}
+.thanks-progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--gold-dim),var(--gold));border-radius:10px;transition:width 2.4s cubic-bezier(.4,0,.2,1);}
+.thanks-progress-label{font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);letter-spacing:1.5px;margin-top:8px;text-transform:uppercase;}
+.thanks-actions{position:relative;z-index:2;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+.thanks-btn{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:13px 22px;border-radius:10px;cursor:none;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s;border:none;}
+.thanks-btn-primary{background:var(--gold);color:#000;}
+.thanks-btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(201,168,76,.3);background:#e8c96a;}
+.thanks-btn-secondary{background:var(--surface);color:var(--text-dim);border:1px solid var(--border2);}
+.thanks-btn-secondary:hover{color:var(--gold);border-color:var(--gold-dim);transform:translateY(-2px);}
+.thanks-note{position:relative;z-index:2;font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);letter-spacing:1px;margin-top:20px;line-height:1.7;}
+@media(max-width:480px){.thanks-card{padding:36px 22px 28px;}.thanks-title{font-size:30px;}}
+
 /* Scrollbar */
 ::-webkit-scrollbar{width:3px;}
 ::-webkit-scrollbar-track{background:var(--bg);}
@@ -722,7 +748,7 @@ img{max-width:100%;height:auto;}
   <p class="hero-sub">Every app we build starts with a problem nobody else bothered to solve.</p>
 
   <div class="dl-counter" id="dlCounter">
-    ⬇ <span id="dlCount">585</span> total downloads across all products
+    ⬇ <span id="dlCount">411+</span> total downloads across all products
   </div>
 
   <div class="product-grid">
@@ -786,7 +812,7 @@ img{max-width:100%;height:auto;}
       </div>
       <p class="preview-caption" id="alCaption">Locking the system on a timer…</p>
     </div>
-    <a class="download-btn" href="https://github.com/Akhouri-Anmol-Kumar/ATLOCK/releases/download/v4.0/ATLOCK.zip">⬇ Download ATLOCK</a>
+    <a class="download-btn" href="https://github.com/Akhouri-Anmol-Kumar/ATLOCK/releases/download/v4.0/ATLOCK.zip" onclick="showThanks('ATLOCK')">⬇ Download ATLOCK</a>
     <p class="about-title" style="margin-top:56px;font-size:32px;">About ATLOCK</p>
     <div class="features-grid">
       <div class="feature-card"><div class="feature-icon">🔒</div><div class="feature-name">System Lockdown</div><div class="feature-desc">Lock your entire system for a set duration. No bypass. No password override during the lock period.</div></div>
@@ -843,7 +869,7 @@ img{max-width:100%;height:auto;}
       </div>
       <p class="preview-caption" id="anCaption">Syntax highlighting, live.</p>
     </div>
-    <a class="download-btn" href="https://github.com/Akhouri-Anmol-Kumar/ANOTE/releases/download/ANOTE/ANOTE.zip">⬇ Download ANOTE</a>
+    <a class="download-btn" href="https://github.com/Akhouri-Anmol-Kumar/ANOTE/releases/download/ANOTE/ANOTE.zip" onclick="showThanks('ANOTE')">⬇ Download ANOTE</a>
     <p class="about-title" style="margin-top:56px;font-size:32px;">About ANOTE</p>
     <div class="features-grid">
       <div class="feature-card"><div class="feature-icon">📑</div><div class="feature-name">Multi-Tab</div><div class="feature-desc">Work on multiple files simultaneously. Proper tabbed interface — not a workaround.</div></div>
@@ -897,7 +923,7 @@ img{max-width:100%;height:auto;}
       </div>
       <p class="preview-caption" id="acCaption">Video and image buttons — yes, really.</p>
     </div>
-    <a class="download-btn" href="https://github.com/Akhouri-Anmol-Kumar/ACALCU-v3/releases/download/ACALCU/ACALCU.by.Akhouri.Systems.zip">⬇ Download ACALCU</a>
+    <a class="download-btn" href="https://github.com/Akhouri-Anmol-Kumar/ACALCU-v3/releases/download/ACALCU/ACALCU.by.Akhouri.Systems.zip" onclick="showThanks('ACALCU')">⬇ Download ACALCU</a>
     <p class="about-title" style="margin-top:56px;font-size:32px;">About ACALCU</p>
     <div class="features-grid">
       <div class="feature-card"><div class="feature-icon">🔬</div><div class="feature-name">Scientific Mode</div><div class="feature-desc">sin, cos, tan, log, ln, √, π, power — full scientific suite built in.</div></div>
@@ -952,7 +978,7 @@ img{max-width:100%;height:auto;}
       </div>
       <p class="preview-caption" id="apCaption">Batch converting 128 images…</p>
     </div>
-    <a class="download-btn" href="https://github.com/Akhouri-Anmol-Kumar/APIC/releases/download/APIC/APIC.zip">⬇ Download APIC</a>
+    <a class="download-btn" href="https://github.com/Akhouri-Anmol-Kumar/APIC/releases/download/APIC/APIC.zip" onclick="showThanks('APIC')">⬇ Download APIC</a>
     <p class="about-title" style="margin-top:56px;font-size:32px;">About APIC</p>
     <div class="features-grid">
       <div class="feature-card"><div class="feature-icon">✏</div><div class="feature-name">Edit Mode</div><div class="feature-desc">Crop, resize, rotate, adjust brightness, contrast, saturation — full non-destructive editing.</div></div>
@@ -1236,14 +1262,6 @@ const DL_CACHE_KEY = 'atlock_dl_total';
 const DL_CACHE_TIME_KEY = 'atlock_dl_total_ts';
 const DL_MIN_REFRESH_MS = 5 * 60 * 1000; // don't hit the API more than once per 5 min
 
-// One-time historical baseline offset.
-// When the ATLOCK release asset was replaced, GitHub reset that asset's
-// download_count, wiping out 108 previously-earned downloads. This constant
-// restores that lost history on top of GitHub's live (raw) total. It is
-// applied exactly once per raw fetch — never applied to an already-offset
-// cached value — so it cannot compound across refreshes.
-const DOWNLOAD_BASELINE_OFFSET = 108;
-
 function showDownloads(total) {
   const el = document.getElementById('dlCount');
   if (el) el.textContent = total.toLocaleString();
@@ -1281,11 +1299,7 @@ async function fetchDownloads(force = false) {
     // Only trust and store the new total if EVERY repo fetch succeeded —
     // a partial result (e.g. one repo rate-limited) is worse than showing
     // the last known-good number, so we simply skip updating on partial failure.
-    const rawTotal = results.reduce((a, b) => a + b, 0);
-    // Apply the baseline offset to the freshly-fetched RAW GitHub sum only.
-    // We never read the offset back out of localStorage and re-add it, so
-    // repeated refreshes cannot stack +108 on top of an already-corrected number.
-    const total = rawTotal + DOWNLOAD_BASELINE_OFFSET;
+    const total = results.reduce((a, b) => a + b, 0);
     localStorage.setItem(DL_CACHE_KEY, String(total));
     localStorage.setItem(DL_CACHE_TIME_KEY, String(Date.now()));
     showDownloads(total);
@@ -1502,6 +1516,58 @@ Object.keys(previewAnimations).forEach(key=>{
   };
   tick();
   setInterval(tick, 2200);
+});
+</script>
+
+<!-- Thanks Overlay -->
+<div class="thanks-overlay" id="thanksOverlay">
+  <div class="thanks-card">
+    <button class="thanks-close" onclick="closeThanks()">✕</button>
+    <div class="thanks-badge">🖤</div>
+    <p class="thanks-eyebrow">Download Started</p>
+    <h2 class="thanks-title">Thanks, <span id="thanksProductName">friend</span>.</h2>
+    <p class="thanks-text" id="thanksText">
+      Your download should begin any second. One dev, no bloat, no data collection —
+      just software built the way it should be.
+    </p>
+    <div class="thanks-progress-wrap">
+      <div class="thanks-progress-bar"><div class="thanks-progress-fill" id="thanksProgressFill"></div></div>
+      <p class="thanks-progress-label" id="thanksProgressLabel">Preparing your file…</p>
+    </div>
+    <div class="thanks-actions">
+      <button class="thanks-btn thanks-btn-primary" onclick="openSupport();closeThanks();">☕ Buy me a coffee</button>
+      <button class="thanks-btn thanks-btn-secondary" onclick="closeThanks()">Continue browsing</button>
+    </div>
+    <p class="thanks-note">If your browser flags the file, that's normal for indie open-source apps.<br/>Check the release page on GitHub anytime to verify the source.</p>
+  </div>
+</div>
+
+<script>
+function showThanks(productName){
+  const overlay = document.getElementById('thanksOverlay');
+  const nameEl = document.getElementById('thanksProductName');
+  const fill = document.getElementById('thanksProgressFill');
+  const label = document.getElementById('thanksProgressLabel');
+
+  nameEl.textContent = 'bro';
+  document.getElementById('thanksText').innerHTML =
+    'Your <strong style="color:var(--text)">'+productName+'</strong> download should begin any second. ' +
+    'One dev, no bloat, no data collection — just software built the way it should be.';
+
+  fill.style.width = '0%';
+  label.textContent = 'Preparing your file…';
+  overlay.classList.add('active');
+
+  requestAnimationFrame(()=>{
+    setTimeout(()=>{ fill.style.width='100%'; },50);
+    setTimeout(()=>{ label.textContent='Download complete ✓'; },2500);
+  });
+}
+function closeThanks(){
+  document.getElementById('thanksOverlay').classList.remove('active');
+}
+document.getElementById('thanksOverlay').addEventListener('click', function(e){
+  if(e.target === this) closeThanks();
 });
 </script>
 
