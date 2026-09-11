@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://akhouri-anmol-kumar.github.io/Akhouri-systems/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!--
+    Once ATLOCK, ANOTE, ACALCU and APIC each get their own real URL
+    (e.g. /atlock.html), add a <url> block for each one here so Google
+    can index and rank them individually.
+  -->
+</urlset>
