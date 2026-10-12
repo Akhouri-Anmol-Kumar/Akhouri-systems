@@ -268,6 +268,9 @@ img{max-width:100%}
   .ticker-track{animation-duration:45s}
   .win{box-shadow:0 8px 24px rgba(0,0,0,.45)}
 
+}
+/* ===== iPad / tablet: burger menu up to 960px ===== */
+@media(max-width:960px){
   /* header: logo + support + burger, links become a dropdown panel */
   .nav-in{height:58px;gap:10px}
   .logo{font-size:13px;letter-spacing:.05em;gap:8px;min-width:0}
@@ -345,6 +348,97 @@ img{max-width:100%}
   .mod:hover::before,.mod:hover::after{width:14px;height:14px}
   .feat:hover{transform:none}
   .btn:active{transform:scale(.97)}
+}
+
+/* =====================================================================
+   TABLET / iPad mini  (portrait 744-768, landscape 1024-1133)
+   Purely additive CSS — no markup, data or script logic touched.
+   ===================================================================== */
+:root{--gutter:24px}
+@media(max-width:900px){:root{--gutter:18px}}
+@media(max-width:600px){:root{--gutter:16px}}
+/* FIX: .hero's "padding:… 0" was wiping the side gutters, so hero text and
+   terminal sat flush against the screen edges on every width <1180px. */
+.wrap,.hero.wrap{
+  padding-left:max(var(--gutter),env(safe-area-inset-left,0px));
+  padding-right:max(var(--gutter),env(safe-area-inset-right,0px));
+}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{overflow-x:clip}
+
+/* Safari / older iPadOS need the -webkit- mask prefix */
+body::before{-webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 30%,transparent 100%)}
+
+/* --- 601px–1100px : the whole "between phone and desktop" band --- */
+@media(min-width:601px) and (max-width:1100px){
+  .mods{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .mod{padding:24px 22px}
+  .mod p{min-height:0}
+  .feats,.why{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .shead h2{font-size:clamp(24px,3.8vw,32px)}
+  .sdesc{max-width:60ch}
+  .ccard .btn{white-space:normal;line-height:1.4;text-align:center;justify-content:center}
+  .tbl-wrap{-webkit-overflow-scrolling:touch}
+  summary{min-height:48px}
+  .btn{min-height:44px}
+  .btn.sm{min-height:40px}
+  .letter{padding:30px 26px}
+}
+
+/* --- portrait tablets: 601px–900px (iPad mini 744 / 768) --- */
+@media(min-width:601px) and (max-width:900px){
+  .hero{padding-top:56px;padding-bottom:44px}
+  .hero-grid{gap:34px}
+  h1{font-size:clamp(36px,6vw,48px);min-height:2.2em}
+  .sub{font-size:16.5px;max-width:58ch}
+  .hero .win{max-width:620px;width:100%}
+  .win-body{min-height:200px}
+  .mgrid{gap:28px;margin:22px 0 34px}
+  .mgrid .lead{font-size:18px}
+  .mgrid > .win{max-width:600px;width:100%}
+  .specs td:first-child{width:170px}
+  .calc-disp{font-size:24px}
+  .keys{gap:8px}
+  .contact-grid{grid-template-columns:1fr 1fr;gap:16px}   /* two cards still fit at 700px */
+  .ccard{padding:22px 18px}
+  .ccard .btn{width:100%}
+  .foot{gap:16px}
+  .modal .box{max-width:520px}
+}
+
+/* --- landscape tablets / small laptops: 901px–1100px (iPad mini landscape 1024) --- */
+@media(min-width:901px) and (max-width:1100px){
+  .hero{padding-top:64px;padding-bottom:52px}
+  .hero-grid{gap:32px;grid-template-columns:1.05fr .95fr}
+  h1{font-size:clamp(38px,4.7vw,48px);min-height:3.3em}
+  .sub{font-size:16px}
+  .win-body{font-size:12px;padding:16px}
+  .mgrid{gap:28px}
+  .mgrid .lead{font-size:17px}
+  .mgrid p.note{font-size:14px}
+  .specs td{padding:8px 10px}
+  .specs td:first-child{width:120px;font-size:11.5px}
+  .big-time{font-size:30px}
+  .keys button{padding:12px 0}
+  .contact-grid{gap:16px}
+  .ccard{padding:22px 18px}
+}
+
+/* --- touch tablets up to 1200px wide (incl. landscape): keep scrolling smooth --- */
+@media(hover:none) and (pointer:coarse) and (max-width:1200px){
+  header.nav{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(7,7,8,.97)}
+  .modal .veil{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(0,0,0,.85)}
+  body::before{position:absolute;height:760px;bottom:auto;mask-image:none;-webkit-mask-image:none;opacity:.55}
+  body::after{display:none}
+  .win{box-shadow:0 8px 24px rgba(0,0,0,.45)}
+  nav.links a{min-height:44px}
+}
+
+/* --- short landscape screens (iPad mini landscape with browser bars) --- */
+@media(orientation:landscape) and (max-height:760px) and (max-width:1200px){
+  header.nav{padding-top:env(safe-area-inset-top,0px)}
+  nav.links{max-height:calc(100dvh - 70px)}
+  .modal .box{max-height:90dvh;overflow-y:auto;-webkit-overflow-scrolling:touch}
 }
 </style>
 </head>
@@ -1081,7 +1175,7 @@ document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click'
     if(links.classList.contains('open') && !links.contains(e.target)) setMenu(false);
   });
   addEventListener('keydown', e => { if(e.key === 'Escape') setMenu(false); });
-  addEventListener('resize', () => { if(innerWidth > 820) setMenu(false); });
+  addEventListener('resize', () => { if(innerWidth > 960) setMenu(false); });
   document.getElementById('supportBtn').addEventListener('click', () => setMenu(false));
 })();
 </script>
