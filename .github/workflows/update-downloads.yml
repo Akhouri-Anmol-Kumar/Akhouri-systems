@@ -18,13 +18,17 @@ jobs:
       - name: Calculate total downloads
         id: calc
         run: |
-          OWNER="Akhouri-Anmol-Kumar"
-          REPOS=("ATLOCK" "ACALCU-v3" "APIC" "ANOTE")
+          REPOS=(
+            "Akhouri-Systems/ATLOCK"
+            "Akhouri-Systems/ACALCU"
+            "Akhouri-Systems/APIC"
+            "Akhouri-Systems/ANOTE"
+          )
           TOTAL=0
           for REPO in "${REPOS[@]}"; do
             COUNT=$(curl -sL -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-              "https://api.github.com/repos/$OWNER/$REPO/releases?per_page=100" \
-              | jq '[.[].assets[].download_count] | add // 0')
+              "https://api.github.com/repos/$REPO/releases?per_page=100" \
+              | jq 'if type=="array" then ([.[].assets[].download_count] | add // 0) else 0 end')
             TOTAL=$((TOTAL + COUNT))
           done
 
