@@ -2,11 +2,16 @@ name: Update Download Counter
 
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '17 * * * *'   # every hour at :17 (off-peak minute = fewer skipped runs)
   workflow_dispatch:
 
 permissions:
   contents: write
+  actions: write            # needed to trigger the Pages deploy below
+
+concurrency:
+  group: update-counter
+  cancel-in-progress: false
 
 jobs:
   update-counter:
@@ -32,12 +37,9 @@ jobs:
             TOTAL=$((TOTAL + COUNT))
           done
 
-          # One-time correction offset: a repo was deleted and re-uploaded earlier,
-          # which permanently wiped 105 real downloads from GitHub's own counters.
-          # This adds them back so the number reflects the true history.
+          # Permanent correction: 105 real downloads lost when a repo was deleted/re-uploaded
           OFFSET=105
           TOTAL=$((TOTAL + OFFSET))
-
           echo "total=$TOTAL" >> "$GITHUB_OUTPUT"
 
       - name: Write downloads.json
@@ -50,4 +52,12 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add downloads.json
           git diff --staged --quiet || git commit -m "Update download counter"
+          git pull --rebase origin ${{ github.ref_name }}
           git push
+
+      # Only needed if your Pages site is deployed by its own workflow
+      - name: Trigger Pages deploy
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run "YOUR-PAGES-WORKFLOW-FILENAME.yml" --ref ${{ github.ref_name }}
+        continue-on-error: true
