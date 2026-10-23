@@ -6,11 +6,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Akhouri Systems — We build what others forgot to fix.</title>
-<meta name="description" content="Akhouri Systems builds free, portable Windows desktop software: ATLOCK security suite, ANOTE text editor, ACALCU customizable calculator and APIC image processing center. No telemetry, no installers, no accounts.">
+<meta name="description" content="Akhouri Systems builds free, portable Windows desktop software: ATLOCK security suite and APIC image processing center. No telemetry, no installers, no accounts.">
 <meta name="theme-color" content="#070708">
 <link rel="canonical" href="https://akhouri-anmol-kumar.github.io/Akhouri-systems/">
 <meta property="og:title" content="Akhouri Systems — We build what others forgot to fix.">
-<meta property="og:description" content="Four free portable Windows apps built by one developer in India. Zero telemetry, zero installers, zero compromise.">
+<meta property="og:description" content="Two free portable Windows apps built by one developer in India. Zero telemetry, zero installers, zero compromise.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://akhouri-anmol-kumar.github.io/Akhouri-systems/">
 <meta property="og:site_name" content="Akhouri Systems">
@@ -24,15 +24,13 @@
 {"@context":"https://schema.org","@graph":[
 {"@type":"Organization","name":"Akhouri Systems","founder":{"@type":"Person","name":"Akhouri Anmol Kumar"},"description":"Independent desktop software venture based in India.","areaServed":"Worldwide"},
 {"@type":"SoftwareApplication","name":"ATLOCK","operatingSystem":"Windows 10, Windows 11","applicationCategory":"SecurityApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"description":"Total Security Suite for Windows: timed system lockdown, NTFS file guard, offline AES password vault, intruder capture."},
-{"@type":"SoftwareApplication","name":"ANOTE","operatingSystem":"Windows 10, Windows 11","applicationCategory":"TextEditor","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"description":"Premium text editor with multi-tab editing, syntax highlighting, per-file password lock, translator and auto save."},
-{"@type":"SoftwareApplication","name":"ACALCU","operatingSystem":"Windows 10, Windows 11","applicationCategory":"UtilitiesApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"description":"World's most customizable calculator: scientific mode, per-button colors, fonts, images and video buttons."},
 {"@type":"SoftwareApplication","name":"APIC","operatingSystem":"Windows 10, Windows 11","applicationCategory":"MultimediaApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"description":"Advanced Image Processing Center: non-destructive editing, batch conversion, compression and system-wide image search."},
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Are these apps really free?","acceptedAnswer":{"@type":"Answer","text":"Yes — every app on this site is free to download and use, with no trial period, no locked features and no forced sign-up."}},
 {"@type":"Question","name":"Do these apps collect my data?","acceptedAnswer":{"@type":"Answer","text":"No. There's no telemetry, no analytics and no cloud account. Everything — vault entries, notes, images — stays on your machine."}},
 {"@type":"Question","name":"Do I need to install anything?","acceptedAnswer":{"@type":"Answer","text":"No installer needed. Each product ships as a single portable .exe — download, run, and you're in. No admin rights required."}},
 {"@type":"Question","name":"Is there a web version of APIC?","acceptedAnswer":{"@type":"Answer","text":"Yes — APIC Web runs in your browser at https://akhouri-anmol-kumar.github.io/APIC-web/ so you can use it without downloading the desktop app."}},
-{"@type":"Question","name":"Which Windows versions are supported?","acceptedAnswer":{"@type":"Answer","text":"All four apps run on Windows 10 and Windows 11, on 64-bit machines. Older Windows versions aren't officially tested."}},
+{"@type":"Question","name":"Which Windows versions are supported?","acceptedAnswer":{"@type":"Answer","text":"Both apps run on Windows 10 and Windows 11, on 64-bit machines. Older Windows versions aren't officially tested."}},
 {"@type":"Question","name":"How do I report a bug or request a feature?","acceptedAnswer":{"@type":"Answer","text":"Message directly on WhatsApp or email — every report goes straight to the developer, no support tickets in between."}},
 {"@type":"Question","name":"Is Akhouri Systems a registered company?","acceptedAnswer":{"@type":"Answer","text":"Akhouri Systems is an independent, solo-run software venture based in India, founded and operated by Akhouri Anmol Kumar."}}]}]}
 </script>
@@ -141,21 +139,11 @@ section{padding:84px 0;scroll-margin-top:84px;border-bottom:1px solid var(--line
 .feat h4 .ic{margin-right:8px}
 .feat p{color:var(--muted);font-size:13.5px}
 /* mocks */
-.mock-tabs{display:flex;border-bottom:1px solid var(--line);background:var(--panel2)}
-.mock-tabs button{font-family:var(--mono);font-size:11.5px;background:none;border:none;border-right:1px solid var(--line);color:var(--muted);padding:10px 16px;cursor:pointer;transition:.25s}
-.mock-tabs button.on{color:var(--gold);background:var(--panel);box-shadow:inset 0 2px 0 var(--gold)}
-.code{padding:16px;font-family:var(--mono);font-size:12.5px;line-height:1.9;min-height:150px;white-space:pre-wrap}
-.code .k{color:var(--gold)}.code .s{color:#9ece6a}.code .c{color:#6d6a63}.code .f{color:#7aa2f7}
 .lock-row{display:flex;justify-content:space-between;align-items:center;padding:11px 16px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12.5px}
 .lock-row:last-of-type{border-bottom:none}
 .lock-row .st{color:var(--gold)}
 .big-time{font-family:var(--mono);font-size:34px;color:var(--gold);text-align:center;padding:18px 0 6px;letter-spacing:.1em;text-shadow:0 0 18px rgba(242,196,78,.45)}
 .lock-cap{font-family:var(--mono);font-size:11.5px;color:var(--muted);text-align:center;padding:0 0 16px}
-.calc-disp{font-family:var(--mono);font-size:26px;color:var(--gold);text-align:right;padding:18px 18px 12px;border-bottom:1px solid var(--line);overflow:hidden}
-.keys{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:14px}
-.keys button{font-family:var(--mono);font-size:15px;background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:4px;padding:13px 0;cursor:pointer;transition:.2s}
-.keys button:hover{border-color:var(--gold);color:var(--gold);box-shadow:0 0 12px rgba(242,196,78,.25)}
-.keys button.eq{background:var(--gold);color:#000;font-weight:700;border-color:var(--gold)}
 .fmt-chips{display:flex;gap:8px;padding:16px 16px 6px;flex-wrap:wrap}
 .fmt-chips span{font-family:var(--mono);font-size:11px;border:1px solid var(--line2);color:var(--muted);padding:5px 10px;border-radius:3px}
 .bar{height:8px;background:var(--panel2);margin:14px 16px;border-radius:4px;overflow:hidden;border:1px solid var(--line)}
@@ -317,13 +305,7 @@ img{max-width:100%}
   .feat{padding:15px}
   summary{padding:14px;font-size:14.5px}
   details .body{padding:0 14px 16px;font-size:14px}
-  .mock-tabs{overflow-x:auto;scrollbar-width:none}
-  .mock-tabs::-webkit-scrollbar{display:none}
-  .mock-tabs button{white-space:nowrap;flex:none}
-  .code{font-size:11.5px;overflow-x:auto;padding:14px}
   .big-time{font-size:28px}
-  .keys{gap:6px;padding:10px}
-  .keys button{padding:14px 0}
   .tbl-wrap{-webkit-overflow-scrolling:touch}
   table.cmp th,table.cmp td{padding:11px 12px;font-size:13px}
   .ccard{padding:20px 16px}
@@ -400,8 +382,6 @@ body::before{-webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 3
   .mgrid .lead{font-size:18px}
   .mgrid > .win{max-width:600px;width:100%}
   .specs td:first-child{width:170px}
-  .calc-disp{font-size:24px}
-  .keys{gap:8px}
   .contact-grid{grid-template-columns:1fr 1fr;gap:16px}   /* two cards still fit at 700px */
   .ccard{padding:22px 18px}
   .ccard .btn{width:100%}
@@ -422,7 +402,6 @@ body::before{-webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 3
   .specs td{padding:8px 10px}
   .specs td:first-child{width:120px;font-size:11.5px}
   .big-time{font-size:30px}
-  .keys button{padding:12px 0}
   .contact-grid{gap:16px}
   .ccard{padding:22px 18px}
 }
@@ -563,8 +542,6 @@ footer{padding:56px 0 30px}
     <a class="logo" href="#top"><img class="glyph" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQFBgoGBgUFBgwICQcKDgwPDg4MDQ0PERYTDxAVEQ0NExoTFRcYGRkZDxIbHRsYHRYYGRj/2wBDAQQEBAYFBgsGBgsYEA0QGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBj/wAARCABgAGADASIAAhEBAxEB/8QAHQAAAQQDAQEAAAAAAAAAAAAABQIDBgcAAQgECf/EAD0QAAEDAwIDBAcFBwQDAAAAAAECAwQABQYRIQcSMRNBUWEIFCIyQnGBFiNSYrEVJkNygpGhFyQzwTTw8f/EABoBAAMBAQEBAAAAAAAAAAAAAAECAwQFAAb/xAAvEQABAwEECAYCAwAAAAAAAAABAAIDEQQSIYETMTJBYXGRsRQiUdHh8AVCJDOh/9oADAMBAAIRAxEAPwD5/wBZWVsDUjSvLy0BvUtxThzlGXpVItkNLMFP/JPmL7FhHj7R6/TWidosFlxq3tXvMGTKkuDniWYHQr8Fu+CfL/5TF/zK+5LyszpPZQmwA1AjjkYbHcAkdfmazOle80i6nVl69lcMazGTp7+ilcfDODOOD96s2umQy0e9Ex6OEtg+BdXqD9NKJx8t4DW48sLglMuWn8S6XxwFX0RqBVUJ6U4OlIbLe23uOdO1EfEU2WgZV7q3jm/AGens7jwBciDoXbbfngofIK0FOjBPRuzQdnjuf3/BLivZLGTRkyImvh2zfujzJqoBTgO9Dwl3Fj3DOveqUzk7TQcqdlJ+InADiNw5tab3PtzF3x1z2mb/AGV0S4a0noStO6P6gPmaqzTSrj4d8Wc44XXJT2K3YiE6dJVplp7aFLSdilxk7bjbUaHzqdZDw3wTjrjczLuC9uTj+Yw2jIu2ClYKH0j3noB21GvVv6aJOnM4mdF/dq9ff07Jbods9FzFWUt1pxl5TTqFNrQopUhQ0II2II7jSK1KaypfjkKLZ7V9qbo0l0hXLAjL6OuD4z+Uf+91A7DaXb3kMW2NkjtV6KV+FI3UfoNaL5TdGrjfCxC9m3w0+rRUDoEp2J+pH6VCU3joxny+VVlGi+cl4Jk+Xcrg7OmvKdfdOqlH9B4DypCdjTAO9OjrVAKCgUya4lPg0Qs9ruN/yKBYrRHVJuE+QiLHZT8bi1BIHy33PcNaGBWg3rqX0OcCak5NcOKN3bSItrC4luLmye2KfvXdfBCDy6+Kz4VmttqFmhdKd3fcq2eEzSBgVJcSsBuvDDidcsMu7qX3IhSpmUhJSiSysaodT5HcadxBHdUWB1rtj0pMMgcR+CVt4tYqtucq1sB/t2R/5NvcOqj4/dq9rxAK/CuI0mp/jrX4qEPODhgRxCa0waGS6NW7knhppRCyXy7Y3kcK/wBhuD1vucJ0PR5TJ0U2ofqD0IOxBIO1DAdO+lVtIBFCs9aYhXFxZslp4tcNF8c8Tgswr3EWmPmFojD2UPHZM1tPchfxee53CiedDV0cHc6awfiawu5pS9j92bNqvMZzdDsV32SSPykhXy5vGoRxUwh7h3xavOJrUXGYr/NFeP8AFYWOZpevfqkj6g1ms5MbzAdWscvTLsQryC+3SDP7xTmGJ/Z2LZJkRGjjEYRGFeC3Tp+mlRVOwqZIb9X9HgvDYyr1yqI8Et6ioYOtUi8znu406ISigaOHdOg70tKt6ZBpeo0qyiiFrt0693yHZra12syY8iOyjxUo6DXy7z5CuueL2QwOEPoy23hrjUkpnXJgwQ4jZXYDeS8fNxSuX+tXhVRej5jyE3eTm09KUtxeaNEU50CyPvHP6UnTX8x8KhHEzNns64jTb2XFept6RoSCdkMIJCT/AFElR81Vxpmm12xsf6R4ni7cMl0o/wCPZi/9n4DlvXSPoh8S25mJXbhJfimQhhDku3tO7pcjubPsaeAKubTwWvwrnLiPjEbC+Kl6xqDKbkxIsg+rrQ4FkNK9pKVadFpB5SOuo86nPCbgXnl+uEbJ3Z8zEreEqDc1JLct5CklKg0jYgFJI5laDQ7a1LOKfCfEYfB1FywaK0p61rVIdktudsua17rpUv4ykjm22GigBUGWiz2e3OuvrfpUDUDz4qhglmsoJbs795HJc6hW29LSaYSdqcCq+gXJS1aKBBGx2NWXxn/ejg3w24gqHPMVCdsU90ndTkZWiCfMpKqrHWrIed9e9CybGc1JtuUtuNa9wcZ0P+TWS0+V8b+NOop3otEOIe3h2UXj/wC79GqQBuYV8SpXklbYH61BAfOp/wAM0i9Y7leG+89PgetRUk9XmTzADzIP+Kr/AH6EaHwqkHle9nGvX6UJsWsdwp0TgO9eiHEk3G5x7dDb55EhxLTafFROgryA1JsGyK0YxkyrvdIMmW420Ux0slI5FK2Kjr5agfOqyEtaS0VKmwAuAcaBXjeLTcoXDqJgeIM8zrzQjOSieRDTXV1xSu4rJIA6nmOg2ovheB8O+GNr+0+VS40+bH0V63MT90wruDTW+qvAnVXgBVfOccrYhpXqlinKWB7IcdQlOvdqRrVY5FlN6yu6euXmUVhOoaYTs2yPBKf++pr5+Gw2qRpjebjTiTvK7Mtrs7CHtF4jAegVp8UvSAvmZofsmOKkWmxr1S6vm0kTB+cj3EH8AO/eT0onwEzXnsM/BZ60qDHNKhpXuFNK2db+Wp5tPBSqoRJANe6y3eXj2TQr5A/5oroXy9AtPRST5EEj610JPxkXhjZ4m09OfNYY7dJpxNIa+yOZtj32VzeZamwfVde2iqPeyrdP1G6T5poClffUuzzOLVmTEZUe0y4kqMshDjq0qBbV1SdN+oBH18ahqVeNa7MZDG3Sijt6zzhgkOjNQngoEVP5EgQvRHkMqO9wyNJSPENtb/5FV4VaD5b1LuI0j9lYNiOHg6Ox4y7hKR4OPHUA+YGv96WcXnMZxr0TQmjXu4d1DMYv0nGctgX2Hu7EeDnL+NPRSfqCR9ak/E7Ho1syZq/2Y9pYr4j12E4kbJKt1tnwKVE7eflUAqysDyC0XWwP8PMueDNrludpAnq6wJJ6K/kV39258SQ0wLHCZo1YHl8a+qERDgYzlz+VXoNGLbMsTFiuUa4QnXpshITHeTy6RyncHfc8x2Pl41rJ8Yu+I5E9Z7zHLTze6FjdDqO5aD3pNDGpD7SSGnloB6hJ0q1Q9oIOCliw0OtGUz7MrCxATbCLoHiszQgK5kEjRvy7zzddtOhpU+dZn8ZjxIdpWxcEdkHZXXtNELCtu7UlJ89O6hKZspMRyOHT2bjiXVeJUnXQ693U04u5TnkPpcfKu3eD7hI3Kxrory6mlu0RvYIze7lZZTcEWy0GOpheroLAb9nRP3RIJ7Q6hZ51aE82mleiTdsbGWwJsO0rVbY6lLfYcZSjteZxawkp1UNEhSEAnqEdO6gCrpPUlYVIJ55Alkkb9oPi1+tLkXa4S1ylyZHaGVydsSkDm5Pd6DbTyoXNyN9e+ZcrQ/dbs/Gt6WmJLXLFaSkDsF8zZ10Gw2Ssaj8WwA2A1KqSqTJW32bkhxaD8JVtTkGJJnzm4cNouvLOiQP1PgPOmADQlNXHBHsPtjNxyFMicQi3QR61LWegQnfT6kaf3qP5PfHsjyqbeHtQX3NUIPwIGyU/QAUZyG6RrXZRitpdDiebnnyU/wAZwfCPyj/qogTSRC84yHLl8qkhui4M+a1Wwa1WVdRVkY9ntruePtYjxEjPTrW2OWHcWt5Vv/lPVSPy/qNqRkPCq+W62m+4443kuPq3RcLb94UDwcbHtIPj3fKq61o3jeX5JiFzFwxu8Src/wB5ZX7K/JSTsofMVmMLmEuhNOB1fH3BXEoeKSdd/wAobuD8q2DVrf6y49kbfJxE4XWG9SFbKuVuKrfJPmSjZR/tXkfk8Ap2qmoGcWhR/hodZkJT8id6HiHjbjOVCPf/ABHQtOy8Z4feqrYHet66ddqnS1cFYyuZv7ZziN+VXYsg/UV5XM2xi2a/ZjBYbLo92Vc3VSnB5hOwFETudssOeCGhA2nDuhVrxe6XJgzFoTCt6d1zZR5GwPLX3j8qcn36BaoLlqxnn0cHK/cVjRx7yT+FNCLzkl5yB8O3Wc4/p7rfuoR/KkbChZOppxG52MnTd8pS8NwZ1WE61qsrKspL/9k=" alt="Akhouri Systems logo" width="38" height="38"><span class="logo-txt">AKHOURI&nbsp;SYSTEMS</span></a>
     <nav class="links" id="navLinks">
       <a href="#atlock">ATLOCK</a>
-      <a href="#anote">ANOTE</a>
-      <a href="#acalcu">ACALCU</a>
       <a href="#apic">APIC</a>
       <a href="#why">WHY US</a>
       <a href="#guides">GUIDES</a>
@@ -585,7 +562,7 @@ footer{padding:56px 0 30px}
       <p class="tag">INDEPENDENT DESKTOP SOFTWARE LAB · INDIA</p>
       <h1 id="scramble" data-text="We build what others forgot to fix.">We build what others forgot to fix.</h1>
       <p class="sub">Every app we build starts with a problem nobody else bothered to solve.</p>
-      <div class="dl-badge" id="dlBadge"><span class="pulse"></span> <span id="dlCount">759</span>&nbsp;total downloads across all products</div>
+      <div class="dl-badge" id="dlBadge"><span class="pulse"></span> <span id="dlCount">1200</span>&nbsp;total downloads across all products</div>
       <div class="hero-cta">
         <a class="btn" href="#products">View product lineup</a>
         <a class="btn ghost" href="#contact">Talk to the dev</a>
@@ -607,7 +584,7 @@ footer{padding:56px 0 30px}
 <!-- ============ STATS ============ -->
 <div class="wrap">
   <div class="statsbar rv" aria-label="Akhouri Systems at a glance">
-    <div class="stat"><b data-count="4">4</b><span>Products shipped</span></div>
+    <div class="stat"><b data-count="2">2</b><span>Products shipped</span></div>
     <div class="stat"><b data-count="0">0</b><span>Telemetry calls</span></div>
     <div class="stat"><b data-count="0">0</b><span>Accounts required</span></div>
     <div class="stat"><b data-count="1">1</b><span>Solo developer</span></div>
@@ -619,7 +596,7 @@ footer{padding:56px 0 30px}
 <section id="products">
   <div class="wrap">
     <div class="shead rv"><span class="idx">// 01</span><h2>Product Lineup</h2><span class="rule"></span></div>
-    <p class="sdesc rv">Four desktop tools, one philosophy: if the default app frustrates you, it gets replaced. Every product below is free, portable and offline-first.</p>
+    <p class="sdesc rv">Two desktop tools, one philosophy: if the default app frustrates you, it gets replaced. Every product below is free, portable and offline-first.</p>
     <div class="mods">
       <div class="mod rv">
         <span class="num">MODULE_01</span>
@@ -632,18 +609,6 @@ footer{padding:56px 0 30px}
         <h3>APIC</h3><span class="kind">Image Processing</span><span class="newb">+ WEB VERSION LIVE</span>
         <p>Advanced Image Processing Center.</p>
         <div class="row"><a class="btn sm dl" href="https://github.com/Akhouri-Systems/APIC/releases/download/APIC/APIC.zip">⬇ Download</a><a class="btn sm ghost" href="#apic">Specs ↗</a><a class="btn sm ghost" href="https://akhouri-anmol-kumar.github.io/APIC-web/" target="_blank" rel="noopener">🌐 Web</a></div>
-      </div>
-      <div class="mod rv">
-        <span class="num">MODULE_03</span>
-        <h3>ACALCU</h3><span class="kind">Calculator</span>
-        <p>World's Most Customizable Calculator.</p>
-        <div class="row"><a class="btn sm dl" href="https://github.com/Akhouri-Systems/ACALCU/releases/download/ACALCU/ACALCU.by.Akhouri.Systems.zip">⬇ Download</a><a class="btn sm ghost" href="#acalcu">Specs ↗</a></div>
-      </div>
-      <div class="mod rv">
-        <span class="num">MODULE_04</span>
-        <h3>ANOTE</h3><span class="kind">Text Editor</span>
-        <p>The Notepad Killer. Premium Text Editor.</p>
-        <div class="row"><a class="btn sm dl" href="https://github.com/Akhouri-Systems/ANOTE/releases/download/ANOTE/ANOTE.zip">⬇ Download</a><a class="btn sm ghost" href="#anote">Specs ↗</a></div>
       </div>
     </div>
     <div class="desh rv">
@@ -721,123 +686,11 @@ footer{padding:56px 0 30px}
   </div>
 </section>
 
-<!-- ============ ANOTE ============ -->
-<section id="anote">
-  <div class="wrap">
-    <div class="module-head rv"><span class="chip">TEXT EDITOR</span><span class="mono" style="color:var(--muted);font-size:12px">MODULE_02 / WINDOWS</span></div>
-    <div class="shead rv"><span class="idx">// 01.b</span><h2>ANOTE</h2><span class="rule"></span></div>
-    <div class="mgrid">
-      <div class="rv">
-        <p class="lead">The Notepad Killer.</p>
-        <p class="note">Premium Text Editor with real tabs, live syntax highlighting, per-file password locks, in-app translation and auto save. Everything Windows Notepad never grew into.</p>
-        <a class="btn dl" href="https://github.com/Akhouri-Systems/ANOTE/releases/download/ANOTE/ANOTE.zip">⬇ Download ANOTE</a>
-        <table class="specs">
-          <tr><td>VERSION</td><td>Current public release (GitHub)</td></tr>
-          <tr><td>PLATFORM</td><td>Windows 10 / 11, 64-bit</td></tr>
-          <tr><td>INSTALL</td><td>None — single portable .exe</td></tr>
-          <tr><td>OFFLINE</td><td>Yes — except the Translator feature</td></tr>
-          <tr><td>FILE TYPES</td><td>Plain text, code, markdown</td></tr>
-        </table>
-      </div>
-      <div class="win rv">
-        <div class="win-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">ANOTE.exe — Syntax highlighting, live.</span></div>
-        <div class="mock-tabs">
-          <button class="on" data-tab="notes">notes.txt</button>
-          <button data-tab="script">script.py</button>
-          <button data-tab="todo">todo.md</button>
-        </div>
-        <div class="code" id="anoteCode"></div>
-      </div>
-    </div>
-    <h3 class="rv" style="margin-bottom:14px;font-size:18px">About ANOTE</h3>
-    <div class="feats">
-      <div class="feat rv"><h4><span class="ic">📑</span>Multi-Tab</h4><p>Work on multiple files simultaneously. Proper tabbed interface — not a workaround.</p></div>
-      <div class="feat rv"><h4><span class="ic">🎨</span>Syntax Highlighting</h4><p>Code-aware highlighting for multiple languages. Windows Notepad never had this.</p></div>
-      <div class="feat rv"><h4><span class="ic">🔐</span>Password Lock</h4><p>Lock individual files with a password. Your private notes stay private.</p></div>
-      <div class="feat rv"><h4><span class="ic">🌍</span>Translator</h4><p>Translate selected text in-app. No copy-pasting to browser required.</p></div>
-      <div class="feat rv"><h4><span class="ic">🖼</span>Meme Canvas</h4><p>Create memes directly inside your text editor. Because why not.</p></div>
-      <div class="feat rv"><h4><span class="ic">💾</span>Auto Save</h4><p>Never lose your work. ANOTE saves automatically so you don't have to think about it.</p></div>
-    </div>
-    <details class="rv">
-      <summary><span><span class="guide-tag">FIELD GUIDE · ANOTE</span>Private, tabbed notes in five minutes</span></summary>
-      <div class="body"><ol>
-        <li>Run ANOTE.exe and open as many files as you like — each one gets a real tab.</li>
-        <li>Writing code? Syntax highlighting switches on automatically per language.</li>
-        <li>Select any passage and use Translator to translate it in place (this one feature needs internet).</li>
-        <li>Lock a file with its own password so only you can reopen it.</li>
-        <li>Just type — Auto Save writes your work to disk as you go, so a crash never wipes it.</li>
-        <li>Feeling lazy? Meme Canvas turns your text into a meme without leaving the editor.</li>
-      </ol></div>
-    </details>
-    <h3 class="rv" style="margin:26px 0 12px;font-size:18px">ANOTE FAQ</h3>
-    <details class="rv"><summary>Can ANOTE open large text or code files?</summary><div class="body">Yes — ANOTE handles plain text and code files comfortably, with live syntax highlighting and multiple tabs open at once.</div></details>
-    <details class="rv"><summary>Does the Translator feature need internet?</summary><div class="body">Yes, translation calls an online service, so it needs a connection. Every other ANOTE feature works fully offline.</div></details>
-    <details class="rv"><summary>What happens to my work if ANOTE closes unexpectedly?</summary><div class="body">Auto Save keeps your work saved as you type, so an unexpected close won't wipe out what you've written.</div></details>
-    <details class="rv"><summary>Can I password-protect individual notes?</summary><div class="body">Yes — lock any file with its own password right inside ANOTE, so only you can reopen it.</div></details>
-  </div>
-</section>
-
-<!-- ============ ACALCU ============ -->
-<section id="acalcu">
-  <div class="wrap">
-    <div class="module-head rv"><span class="chip">CALCULATOR</span><span class="mono" style="color:var(--muted);font-size:12px">MODULE_03 / WINDOWS</span></div>
-    <div class="shead rv"><span class="idx">// 01.c</span><h2>ACALCU</h2><span class="rule"></span></div>
-    <div class="mgrid">
-      <div class="rv">
-        <p class="lead">World's Most Customizable Calculator.</p>
-        <p class="note">Right-click any button and make it yours — color, font, size, label, an image, or even a video up to 59 seconds. Try the live keypad mock on the right.</p>
-        <a class="btn dl" href="https://github.com/Akhouri-Systems/ACALCU/releases/download/ACALCU/ACALCU.by.Akhouri.Systems.zip">⬇ Download ACALCU</a>
-        <table class="specs">
-          <tr><td>VERSION</td><td>v3 (current public release)</td></tr>
-          <tr><td>PLATFORM</td><td>Windows 10 / 11, 64-bit</td></tr>
-          <tr><td>INSTALL</td><td>None — single portable .exe</td></tr>
-          <tr><td>FOOTPRINT</td><td>Lighter on RAM/CPU than Windows Calculator*</td></tr>
-          <tr><td>INPUT</td><td>Mouse + full keyboard support</td></tr>
-        </table>
-        <p class="fine">*Per developer benchmarking on identical machines.</p>
-      </div>
-      <div class="win rv">
-        <div class="win-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">ACALCU.exe — try it</span></div>
-        <div class="calc-disp" id="calcDisp">12 × 8 = 96</div>
-        <div class="keys" id="calcKeys">
-          <button>7</button><button>8</button><button>9</button><button>÷</button>
-          <button>4</button><button>5</button><button>6</button><button>×</button>
-          <button data-vid>🎬</button><button>0</button><button>.</button><button class="eq">=</button>
-        </div>
-      </div>
-    </div>
-    <h3 class="rv" style="margin-bottom:14px;font-size:18px">About ACALCU</h3>
-    <div class="feats">
-      <div class="feat rv"><h4><span class="ic">🔬</span>Scientific Mode</h4><p>sin, cos, tan, log, ln, √, π, power — full scientific suite built in.</p></div>
-      <div class="feat rv"><h4><span class="ic">🎛</span>Button Customization</h4><p>Right-click any button. Change color, font, size, label — every single button.</p></div>
-      <div class="feat rv"><h4><span class="ic">🖼</span>Image Buttons</h4><p>Set any image as a button background. PNG, JPG, GIF, WebP — all supported.</p></div>
-      <div class="feat rv"><h4><span class="ic">🎬</span>Video Buttons</h4><p>Set a video (up to 59 seconds) as a button background. No other calculator does this.</p></div>
-      <div class="feat rv"><h4><span class="ic">⚡</span>Lighter than Windows</h4><p>Uses less RAM and CPU than the default Windows Calculator. Fast on any machine.</p></div>
-      <div class="feat rv"><h4><span class="ic">⌨</span>Keyboard Support</h4><p>Full keyboard input. Type naturally, press Enter for result. No mouse needed.</p></div>
-    </div>
-    <details class="rv">
-      <summary><span><span class="guide-tag">FIELD GUIDE · ACALCU</span>Build a calculator that looks like yours</span></summary>
-      <div class="body"><ol>
-        <li>Open ACALCU.exe and right-click any button — the customization panel appears.</li>
-        <li>Change its label, font, size and color, or set an image (PNG/JPG/GIF/WebP) as the button face.</li>
-        <li>Pick any clip up to 59 seconds long and assign it as a video button background.</li>
-        <li>Switch between standard and scientific mode at any time — your layout stays.</li>
-        <li>Drive everything from the keyboard: type expressions naturally, press Enter for the result.</li>
-      </ol></div>
-    </details>
-    <h3 class="rv" style="margin:26px 0 12px;font-size:18px">ACALCU FAQ</h3>
-    <details class="rv"><summary>Can I really set a video as a calculator button?</summary><div class="body">Yes — any button can use a video up to 59 seconds long as its background, alongside images, custom colors, and fonts.</div></details>
-    <details class="rv"><summary>Does ACALCU have real scientific functions?</summary><div class="body">Yes — sin, cos, tan, log, ln, √, π, powers and more come built in alongside the standard calculator mode.</div></details>
-    <details class="rv"><summary>Will heavy customization slow ACALCU down?</summary><div class="body">No — ACALCU is built to stay lighter on RAM and CPU than the default Windows Calculator, even fully customized.</div></details>
-    <details class="rv"><summary>Can I use my keyboard instead of clicking buttons?</summary><div class="body">Yes — full keyboard input is supported. Type naturally and press Enter to get your result.</div></details>
-  </div>
-</section>
-
 <!-- ============ APIC ============ -->
 <section id="apic">
   <div class="wrap">
-    <div class="module-head rv"><span class="chip">IMAGE PROCESSING</span><span class="mono" style="color:var(--muted);font-size:12px">MODULE_04 / WINDOWS</span></div>
-    <div class="shead rv"><span class="idx">// 01.d</span><h2>APIC</h2><span class="rule"></span></div>
+    <div class="module-head rv"><span class="chip">IMAGE PROCESSING</span><span class="mono" style="color:var(--muted);font-size:12px">MODULE_02 / WINDOWS</span></div>
+    <div class="shead rv"><span class="idx">// 01.b</span><h2>APIC</h2><span class="rule"></span></div>
     <div class="mgrid">
       <div class="rv">
         <p class="lead">Advanced Image Processing Center.</p>
@@ -937,16 +790,7 @@ footer{padding:56px 0 30px}
         <li>Remember: forgetting the master password means the vault stays closed. That is the point.</li>
       </ol></div>
     </details>
-    <details class="rv"><summary><span><span class="guide-tag">GUIDE 03 · PRODUCTIVITY · 3 MIN READ</span>Replace Notepad completely: tabs, highlighting and auto save (ANOTE)</span></summary>
-      <div class="body"><ol>
-        <li>Set ANOTE as your default editor for .txt and code files.</li>
-        <li>Open multiple files — each gets a proper tab, not a workaround window stack.</li>
-        <li>Code files get language-aware syntax highlighting automatically.</li>
-        <li>Auto Save runs as you type, so closing the laptop mid-sentence costs you nothing.</li>
-        <li>For private journals, lock the individual file with its own password.</li>
-      </ol></div>
-    </details>
-    <details class="rv"><summary><span><span class="guide-tag">GUIDE 04 · MEDIA · 4 MIN READ</span>Shrink and convert images for web upload without quality loss (APIC)</span></summary>
+    <details class="rv"><summary><span><span class="guide-tag">GUIDE 03 · MEDIA · 4 MIN READ</span>Shrink and convert images for web upload without quality loss (APIC)</span></summary>
       <div class="body"><ol>
         <li>Drag your images (or a whole folder) onto the APIC window.</li>
         <li>Choose Convert → WEBP for the best size-to-quality ratio on websites.</li>
@@ -966,15 +810,12 @@ footer{padding:56px 0 30px}
     <div class="tbl-wrap rv">
       <table class="cmp">
         <tr><th>Capability</th><th>Windows default app</th><th>Akhouri Systems</th></tr>
-        <tr><td>Text editing</td><td>Notepad — plain text, no highlighting, no per-file privacy</td><td class="win"><b>ANOTE</b> — real tabs, syntax highlighting, password-locked files, translator, auto save</td></tr>
-        <tr><td>Calculator</td><td>Calculator — fixed look, no customization, no video/image buttons</td><td class="win"><b>ACALCU</b> — every button customizable (color/font/image/video ≤59s), scientific suite, lighter on RAM & CPU*</td></tr>
         <tr><td>Image handling</td><td>Photos — slow for batches, limited formats, no system-wide search</td><td class="win"><b>APIC</b> — batch convert/compress hundreds of images, PNG/JPG/WEBP/BMP/TIFF/ICO, image search, drag & drop</td></tr>
         <tr><td>System lock & file protection</td><td>None built in beyond basic screen lock</td><td class="win"><b>ATLOCK</b> — timed lockdown with no bypass, NTFS File Guard, intruder photos, offline AES vault</td></tr>
-        <tr><td>Data & telemetry</td><td>Cloud accounts and telemetry encouraged</td><td class="win"><b>All four apps</b> — no telemetry, no accounts, no cloud. Everything stays on your machine</td></tr>
-        <tr><td>Installation</td><td>Preinstalled / Store updates</td><td class="win"><b>All four apps</b> — single portable .exe, no installer, no admin rights</td></tr>
+        <tr><td>Data & telemetry</td><td>Cloud accounts and telemetry encouraged</td><td class="win"><b>Both apps</b> — no telemetry, no accounts, no cloud. Everything stays on your machine</td></tr>
+        <tr><td>Installation</td><td>Preinstalled / Store updates</td><td class="win"><b>Both apps</b> — single portable .exe, no installer, no admin rights</td></tr>
       </table>
     </div>
-    <p class="fine rv">*Performance claims based on developer benchmarking against the default Windows Calculator on identical hardware.</p>
   </div>
 </section>
 
@@ -989,7 +830,7 @@ footer{padding:56px 0 30px}
         <tr><td>Installation</td><td>None — each product is a single portable .exe; download, run, done</td></tr>
         <tr><td>Admin rights</td><td>Not required</td></tr>
         <tr><td>Account / sign-up</td><td>None for any product, ever</td></tr>
-        <tr><td>Internet</td><td>Only for ANOTE's Translator; everything else works fully offline</td></tr>
+        <tr><td>Internet</td><td>None — everything works fully offline</td></tr>
         <tr><td>Webcam</td><td>Optional — used only by ATLOCK intruder capture</td></tr>
         <tr><td>APIC Web</td><td>Runs in a modern browser — no download needed (<a href="https://akhouri-anmol-kumar.github.io/APIC-web/" target="_blank" rel="noopener">open it</a>)</td></tr>
         <tr><td>Disk space</td><td>A few megabytes per application</td></tr>
@@ -1008,10 +849,8 @@ footer{padding:56px 0 30px}
       <div class="tl rv"><span class="date">2026-10-20</span><h4>APIC Web is live</h4><p>APIC now has a browser version alongside the portable desktop app — open it from the APIC card or section, no download required.</p></div>
       <div class="tl rv"><span class="date">2026-09-18</span><h4>Website relaunch</h4><p>New engineering-focused site with field guides, head-to-head comparisons, system requirements and this public update log.</p></div>
       <div class="tl rv"><span class="date">SHIPPED</span><h4>ATLOCK v5.0</h4><p>Current public build: System Lockdown, NTFS File Guard, AES Password Vault, Intruder Log and one-time Emergency Halve.</p></div>
-      <div class="tl rv"><span class="date">SHIPPED</span><h4>ACALCU v3</h4><p>Video-button engine (clips up to 59 seconds), image buttons, full per-button customization and scientific mode.</p></div>
-      <div class="tl rv"><span class="date">SHIPPED</span><h4>ANOTE — public release</h4><p>Multi-tab editing, live syntax highlighting, per-file password lock, in-app translator, Meme Canvas and auto save.</p></div>
       <div class="tl rv"><span class="date">SHIPPED</span><h4>APIC — public release</h4><p>Non-destructive edit mode, batch conversion & compression, system-wide image search and drag-and-drop pipeline.</p></div>
-      <div class="tl plan rv"><span class="date">ROADMAP</span><h4>What's next on the bench</h4><p>Layout gallery for ACALCU presets, more translator languages in ANOTE, APIC preset sharing, and deeper ATLOCK intruder reporting. Priorities move with user feedback — send yours on WhatsApp.</p></div>
+      <div class="tl plan rv"><span class="date">ROADMAP</span><h4>What's next on the bench</h4><p>APIC preset sharing and deeper ATLOCK intruder reporting. Priorities move with user feedback — send yours on WhatsApp.</p></div>
     </div>
   </div>
 </section>
@@ -1025,7 +864,7 @@ footer{padding:56px 0 30px}
     <details class="rv"><summary>Do these apps collect my data?</summary><div class="body">No. There's no telemetry, no analytics and no cloud account. Everything — vault entries, notes, images — stays on your machine.</div></details>
     <details class="rv"><summary>Do I need to install anything?</summary><div class="body">No installer needed. Each product ships as a single portable .exe — download, run, and you're in. No admin rights required.</div></details>
     <details class="rv"><summary>Is there a web version of APIC?</summary><div class="body">Yes — <a href="https://akhouri-anmol-kumar.github.io/APIC-web/" target="_blank" rel="noopener">APIC Web</a> runs in your browser, so you can try it without downloading anything. The desktop app remains available as a portable Windows .exe.</div></details>
-    <details class="rv"><summary>Which Windows versions are supported?</summary><div class="body">All four apps run on Windows 10 and Windows 11, on 64-bit machines. Older Windows versions aren't officially tested.</div></details>
+    <details class="rv"><summary>Which Windows versions are supported?</summary><div class="body">Both apps run on Windows 10 and Windows 11, on 64-bit machines. Older Windows versions aren't officially tested.</div></details>
     <details class="rv"><summary>How do I report a bug or request a feature?</summary><div class="body">Message directly on WhatsApp or email below — every report goes straight to the developer, no support tickets in between.</div></details>
     <details class="rv"><summary>Is Akhouri Systems a registered company?</summary><div class="body">Akhouri Systems is an independent, solo-run software venture based in India, founded and operated by Akhouri Anmol Kumar.</div></details>
   </div>
@@ -1048,7 +887,7 @@ footer{padding:56px 0 30px}
         <h3>💬 WhatsApp</h3>
         <p>Fastest way to reach the developer directly — for support, feedback, or just to say hi.</p>
         <a class="btn" href="https://wa.me/917633003470" target="_blank" rel="noopener">Chat on WhatsApp — +91 76330 03470</a>
-        <p class="fine" style="margin-top:14px">Available for genuine queries about ATLOCK, ANOTE, ACALCU and APIC.</p>
+        <p class="fine" style="margin-top:14px">Available for genuine queries about ATLOCK and APIC.</p>
       </div>
     </div>
   </div>
@@ -1081,7 +920,7 @@ footer{padding:56px 0 30px}
       </div>
       <div class="fcol">
         <h5>PRODUCTS</h5>
-        <a href="#atlock">ATLOCK</a><a href="#anote">ANOTE</a><a href="#acalcu">ACALCU</a><a href="#apic">APIC</a>
+        <a href="#atlock">ATLOCK</a><a href="#apic">APIC</a>
         <a href="https://akhouri-anmol-kumar.github.io/APIC-web/" target="_blank" rel="noopener">APIC Web ↗</a>
       </div>
       <div class="fcol">
@@ -1178,9 +1017,9 @@ addEventListener('scroll', () => {
 /* ---------- LIVE DOWNLOAD COUNTER ----------
    Reads downloads.json, which your GitHub Action
    (.github/workflows/update-downloads.yml) rewrites every 15 min as:
-   (ATLOCK + ACALCU-v3 + APIC + ANOTE release download_count) + 105 offset.
+   (release download_count of the remaining products) + 105 offset.
    Nothing here modifies your workflow or the JSON — read-only. */
-let DL_TOTAL = 759; /* fallback shown only if downloads.json can't be reached */
+let DL_TOTAL = 1200; /* fallback shown only if downloads.json can't be reached */
 function loadDownloadCount(){
   return fetch('downloads.json?t=' + Date.now(), {cache:'no-store'})
     .then(r => { if(!r.ok) throw new Error('http ' + r.status); return r.json(); })
@@ -1197,10 +1036,8 @@ loadDownloadCount().then(() => {
   if (badgeNum) badgeNum.textContent = DL_TOTAL;
   const lines = [
     '$ akhouri --status',
-    '> 4 products shipped · 0 telemetry calls',
+    '> 2 products shipped · 0 telemetry calls',
     '> atlock.exe  ......... LOCKED DOWN',
-    '> anote.exe   ......... TABS OPEN',
-    '> acalcu.exe  ......... CUSTOMIZED',
     '> apic.exe    ......... BATCH RUNNING',
     '> downloads_total = ' + DL_TOTAL + ' && climbing',
     '$ _'
@@ -1234,7 +1071,7 @@ const spy = new IntersectionObserver(es => es.forEach(e => {
       a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
   }
 }), {rootMargin:'-40% 0px -55% 0px'});
-['atlock','anote','acalcu','apic','why','guides','faq','contact'].forEach(id => {
+['atlock','apic','why','guides','faq','contact'].forEach(id => {
   const s = document.getElementById(id); if(s) spy.observe(s);
 });
 
@@ -1249,42 +1086,6 @@ const spy = new IntersectionObserver(es => es.forEach(e => {
           s = String(t%60).padStart(2,'0');
     el.textContent = h+':'+m+':'+s;
   },1000);
-})();
-
-/* ---------- ANOTE mock tabs ---------- */
-(function(){
-  const code = {
-    notes: `<span class="c">// notes.txt — auto-saved 2s ago</span>\nIdeas are cheap. Shipped builds are not.\nANOTE keeps every tab, every lock,\nevery line — offline, on my machine.`,
-    script: `<span class="k">def</span> <span class="f">build</span>(app):\n    telemetry = <span class="k">False</span>   <span class="c"># always</span>\n    cloud     = <span class="k">None</span>\n    <span class="k">return</span> ship(app, <span class="s">"single .exe"</span>)`,
-    todo: `<span class="k"># todo.md</span>\n[x] ANOTE — password lock per file\n[x] ACALCU — video buttons (≤59s)\n[ ] APIC — preset sharing\n[ ] ATLOCK — deeper intruder reports`
-  };
-  const box = document.getElementById('anoteCode');
-  box.innerHTML = code.notes;
-  document.querySelectorAll('.mock-tabs button').forEach(b => b.addEventListener('click', () => {
-    document.querySelectorAll('.mock-tabs button').forEach(x => x.classList.remove('on'));
-    b.classList.add('on');
-    box.innerHTML = code[b.dataset.tab];
-  }));
-})();
-
-/* ---------- ACALCU mock keypad ---------- */
-(function(){
-  const disp = document.getElementById('calcDisp');
-  let expr = '';
-  document.getElementById('calcKeys').addEventListener('click', e => {
-    const b = e.target.closest('button'); if(!b) return;
-    if(b.dataset.vid !== undefined){ disp.textContent = '🎬 video buttons: up to 59s'; expr=''; return; }
-    const v = b.textContent;
-    if(v === '='){
-      const safe = expr.replace(/×/g,'*').replace(/÷/g,'/');
-      if(/^[0-9+\-*/. ]+$/.test(safe) && safe.trim()){
-        try { disp.textContent = expr + ' = ' + Function('return ('+safe+')')(); }
-        catch(_){ disp.textContent = 'error'; }
-      }
-      expr = ''; return;
-    }
-    expr += v; disp.textContent = expr;
-  });
 })();
 
 /* ---------- email puzzle ---------- */
