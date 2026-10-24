@@ -27,6 +27,7 @@ jobs:
             "Akhouri-Systems/ACALCU"
             "Akhouri-Systems/APIC"
             "Akhouri-Systems/ANOTE"
+            "Akhouri-Systems/ASNIPP"
           )
           TOTAL=0
           for REPO in "${REPOS[@]}"; do
