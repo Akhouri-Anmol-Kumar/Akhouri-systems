@@ -2,12 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://akhouri-anmol-kumar.github.io/Akhouri-systems/</loc>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <!--
-    Once ATLOCK, ANOTE, ACALCU and APIC each get their own real URL
-    (e.g. /atlock.html), add a <url> block for each one here so Google
-    can index and rank them individually.
-  -->
+  <url>
+    <loc>https://akhouri-anmol-kumar.github.io/Akhouri-systems/blog/</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://akhouri-anmol-kumar.github.io/Akhouri-systems/blog/protect-folder-windows-ntfs-file-guard.html</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://akhouri-anmol-kumar.github.io/Akhouri-systems/blog/offline-encrypted-password-vault-windows.html</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://akhouri-anmol-kumar.github.io/Akhouri-systems/blog/batch-convert-compress-images-webp-apic.html</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://akhouri-anmol-kumar.github.io/Akhouri-systems/blog/record-screen-with-audio-and-draw-live-asnipp.html</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://akhouri-anmol-kumar.github.io/Akhouri-systems/privacy.html</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>
