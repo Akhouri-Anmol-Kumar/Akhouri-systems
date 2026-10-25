@@ -26,9 +26,15 @@
   </url>
   <url>
     <loc>https://akhouri-anmol-kumar.github.io/Akhouri-systems/blog/</loc>
-    <lastmod>2026-10-24</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://akhouri-anmol-kumar.github.io/Akhouri-systems/blog/does-encryption-really-matter.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://akhouri-anmol-kumar.github.io/Akhouri-systems/blog/batch-convert-compress-images-webp-apic.html</loc>
