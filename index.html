@@ -881,6 +881,34 @@ footer{padding:56px 0 30px}
   .newb{display:block;margin:8px 0 0;width:max-content}
 }
 @media(hover:none){.cglow{display:none}}
+
+/* ===== GET-ALL CARD + COMETFLOW PROMO + EFFECTS (additive) ===== */
+@property --ang{syntax:"<angle>";initial-value:0deg;inherits:false}
+.getall{margin-top:18px;border-radius:6px;padding:1px;position:relative;background:conic-gradient(from var(--ang),transparent 0 62%,var(--gold) 80%,#fff1bd 88%,transparent 100%),var(--line2);animation:spinb 5s linear infinite}
+@keyframes spinb{to{--ang:360deg}}
+.getall .ga-in{background:linear-gradient(90deg,rgba(242,196,78,.07),transparent),var(--panel);border-radius:5px;padding:24px 26px;display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap}
+.getall h3{font-size:22px;margin:10px 0 6px;letter-spacing:-.01em}
+.getall p{color:var(--muted);font-size:14px;max-width:60ch}
+.getall .ga-act{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.getall .fine{margin:0}
+.promo{margin-top:18px}
+.promo .promo-t{color:var(--muted);font-size:13.5px;margin-top:6px;max-width:60ch}
+.allist{list-style:none;margin:0 0 14px;display:grid;gap:8px}
+.allist li{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid var(--line);background:var(--bg2);padding:11px 14px;border-radius:4px;font-family:var(--mono);font-size:13px;transition:border-color .3s}
+.allist li a{font-size:11.5px;letter-spacing:.08em;color:var(--muted)}
+.allist li.go{border-color:var(--gold2)}
+.allist li.go a{color:var(--gold)}
+.allist li.done a{color:var(--gold)}
+.win{position:relative}
+.win::after{content:"";position:absolute;left:0;right:0;top:-30%;height:30%;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(242,196,78,.07),transparent);animation:scan 6s linear infinite}
+@keyframes scan{to{top:110%}}
+.btn .rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.45);transform:scale(0);animation:rip .6s ease-out forwards;pointer-events:none}
+@keyframes rip{to{transform:scale(3.2);opacity:0}}
+.ticker:hover .ticker-track{animation-play-state:paused}
+#sparks{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:70}
+.shead h2.dec{font-variant-ligatures:none}
+@media(max-width:600px){.getall .ga-in{padding:20px 16px}.getall .ga-act,.getall .btn{width:100%}.getall .btn{justify-content:center}.promo .btn{width:100%;justify-content:center}}
+@media(prefers-reduced-motion:reduce){.getall{animation:none}.win::after{display:none}}
 </style>
 </head>
 <body>
@@ -970,9 +998,25 @@ footer{padding:56px 0 30px}
         <div class="row"><a class="btn sm dl" href="https://github.com/Akhouri-Systems/ASNIPP/releases/download/v1.0.0/ASNIPP_v1.zip">⬇ Download</a><a class="btn sm ghost" href="asnipp/">Full details ↗</a></div>
       </article>
     </div>
-    <aside class="desh rv" aria-label="Another project by Akhouri Systems">
-      <span class="lbl">→ INDIA'S OWN SOCIAL MEDIA PLATFORM</span>
-      <a class="btn ghost sm" href="https://desh-via.vercel.app/" target="_blank" rel="noopener">Visit Desh Via ↗</a>
+    <div class="getall rv" id="getAll">
+      <div class="ga-in">
+        <div>
+          <span class="chip">FOR THE 10% WHO WANT EVERYTHING</span>
+          <h3>Want the whole toolkit?</h3>
+          <p>Grab ATLOCK, APIC and ASNIPP together in one click. Only need one app? Use the individual download buttons above &mdash; nothing changes for you.</p>
+        </div>
+        <div class="ga-act">
+          <button class="btn" id="getAllBtn" type="button">&#11015; Get all 3 apps &middot; 1 click</button>
+          <span class="fine">3 portable .zip files &middot; downloads start one after another</span>
+        </div>
+      </div>
+    </div>
+    <aside class="desh promo rv" aria-label="Cometflow Space">
+      <div>
+        <span class="lbl">&rarr; ALSO CHECK OUT: COMETFLOW SPACE</span>
+        <p class="promo-t">350+ free browser-based developer tools, calculators &amp; AI apps &mdash; no install needed.</p>
+      </div>
+      <a class="btn ghost sm" href="https://cometflow-space-new.vercel.app/" target="_blank" rel="noopener">Visit Cometflow Space &#8599;</a>
     </aside>
   </div>
 </section>
@@ -1364,7 +1408,7 @@ footer{padding:56px 0 30px}
         <p class="fh">CONNECT</p>
         <a href="https://wa.me/917633003470" target="_blank" rel="noopener">WhatsApp</a>
         <a href="https://github.com/Akhouri-Systems" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://desh-via.vercel.app/" target="_blank" rel="noopener">Desh Via ↗</a>
+        <a href="https://cometflow-space-new.vercel.app/" target="_blank" rel="noopener">Cometflow Space ↗</a>
         <a href="#" data-support>Support the dev</a>
         <a href="privacy.html">Privacy Policy</a>
       </nav>
@@ -1403,6 +1447,23 @@ footer{padding:56px 0 30px}
       <button class="btn sm ghost" data-close>Continue browsing</button>
     </div>
     <p class="fine" style="margin-top:14px">If your browser flags the file, that's normal for indie open-source apps. Check the release page on GitHub anytime to verify the source.</p>
+  </div>
+</div>
+
+<!-- ============ GET ALL MODAL ============ -->
+<div class="modal" id="allModal" role="dialog" aria-modal="true">
+  <div class="veil" data-close></div>
+  <div class="box">
+    <button class="x" data-close>&#10005;</button>
+    <h3>&#128230; GETTING ALL 3 APPS</h3>
+    <p>Downloads start one after another. If your browser asks to <b>allow multiple downloads</b>, click Allow. Anything blocked? Use the manual links below.</p>
+    <ul class="allist" id="allList">
+      <li data-app="0"><span>ATLOCK</span><a href="https://github.com/Akhouri-Systems/ATLOCK/releases/download/v5.0.0/ATLOCK_v5.zip"><em>waiting</em></a></li>
+      <li data-app="1"><span>APIC</span><a href="https://github.com/Akhouri-Systems/APIC/releases/download/APIC/APIC.zip"><em>waiting</em></a></li>
+      <li data-app="2"><span>ASNIPP</span><a href="https://github.com/Akhouri-Systems/ASNIPP/releases/download/v1.0.0/ASNIPP_v1.zip"><em>waiting</em></a></li>
+    </ul>
+    <div class="acts"><button class="btn sm" id="allCoffee">&#9749; Buy me a coffee</button><button class="btn sm ghost" data-close>Close</button></div>
+    <p class="fine" style="margin-top:14px">Extract each zip anywhere and run the .exe &mdash; no installer, no admin rights.</p>
   </div>
 </div>
 
@@ -1665,6 +1726,61 @@ document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click'
     }, {passive:true});
     document.querySelectorAll('.mod').forEach(m => m.addEventListener('mouseleave', () => { m.style.transform = ''; }));
   }
+})();
+</script>
+<script>
+/* ===== get-all + effects (additive) ===== */
+(function(){
+  const calm=matchMedia('(prefers-reduced-motion:reduce)').matches, fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+  const m=document.getElementById('allModal'), btn=document.getElementById('getAllBtn');
+  if(btn&&m){
+    let busy=false;
+    btn.addEventListener('click',()=>{
+      m.classList.add('open'); if(busy) return; busy=true;
+      const items=[...m.querySelectorAll('#allList li')];
+      items.forEach(li=>{li.className='';li.querySelector('em').textContent='waiting';});
+      items.forEach((li,i)=>setTimeout(()=>{
+        li.classList.add('go'); li.querySelector('em').textContent='starting…';
+        const a=document.createElement('a'); a.href=li.querySelector('a').href; a.rel='noopener'; a.style.display='none';
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(()=>{li.classList.remove('go');li.classList.add('done');li.querySelector('em').textContent='sent ✓ (click to retry)';if(i===items.length-1)busy=false;},700);
+      },i*1500));
+    });
+    document.getElementById('allCoffee').addEventListener('click',()=>{m.classList.remove('open');document.getElementById('supportBtn').click();});
+  }
+  /* click ripple */
+  document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('.btn');if(!b||calm)return;
+    const r=b.getBoundingClientRect(),d=Math.max(r.width,r.height),x=document.createElement('span');
+    x.className='rip';x.style.width=x.style.height=d+'px';x.style.left=(e.clientX-r.left-d/2)+'px';x.style.top=(e.clientY-r.top-d/2)+'px';
+    b.appendChild(x);setTimeout(()=>x.remove(),650);});
+  /* section heading decode on reveal */
+  if(!calm){
+    const ch='!<>-_/[]{}=+*^?#01';
+    const o=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;o.unobserve(e.target);
+      const h=e.target,t=h.textContent;let f=0;h.classList.add('dec');
+      const iv=setInterval(()=>{f++;let out='';for(let i=0;i<t.length;i++)out+=(t[i]===' '||i<f/1.2)?t[i]:ch[Math.floor(Math.random()*ch.length)];
+        h.textContent=out;if(f>t.length*1.2+2){clearInterval(iv);h.textContent=t;}},32);}),{threshold:.6});
+    document.querySelectorAll('.shead h2').forEach(h=>o.observe(h));
+  }
+  if(!fine||calm) return;
+  /* magnetic buttons */
+  document.querySelectorAll('.hero-cta .btn,.mod .row .btn,.getall .btn,.btnrow .btn').forEach(b=>{
+    b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();
+      b.style.transform='translate('+((e.clientX-r.left-r.width/2)*.18).toFixed(1)+'px,'+((e.clientY-r.top-r.height/2)*.25-2).toFixed(1)+'px)';});
+    b.addEventListener('mouseleave',()=>{b.style.transform='';});
+  });
+  /* gold spark trail */
+  const c=document.createElement('canvas');c.id='sparks';c.setAttribute('aria-hidden','true');document.body.appendChild(c);
+  const x=c.getContext('2d');let P=[],W,H;
+  function rs(){W=c.width=innerWidth;H=c.height=innerHeight;}rs();addEventListener('resize',rs);
+  let lx=0,ly=0;
+  addEventListener('mousemove',e=>{const d=Math.hypot(e.clientX-lx,e.clientY-ly);lx=e.clientX;ly=e.clientY;
+    if(d>6&&P.length<70)P.push({x:e.clientX,y:e.clientY,vx:(Math.random()-.5)*.8,vy:Math.random()*.8+.2,l:1,s:Math.random()*1.8+.8});},{passive:true});
+  (function loop(){x.clearRect(0,0,W,H);
+    for(let i=P.length-1;i>=0;i--){const p=P[i];p.x+=p.vx;p.y+=p.vy;p.l-=.025;
+      if(p.l<=0){P.splice(i,1);continue;}
+      x.globalAlpha=p.l*.8;x.fillStyle='#f2c44e';x.beginPath();x.arc(p.x,p.y,p.s,0,6.283);x.fill();}
+    requestAnimationFrame(loop);})();
 })();
 </script>
 </body>
