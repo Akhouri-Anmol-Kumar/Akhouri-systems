@@ -436,6 +436,10 @@ h1{font-size:clamp(34px,5.2vw,60px);line-height:1.08;font-weight:700;letter-spac
 h1 .g{color:var(--gold)}
 .sub{color:var(--muted);font-size:17px;margin:20px 0 22px;max-width:52ch}
 .dl-badge{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;color:var(--gold);border:1px dashed var(--gold2);background:rgba(242,196,78,.07);padding:10px 16px;border-radius:3px;margin-bottom:26px}
+.dl-wrap{margin-bottom:26px}
+.dl-wrap .dl-badge{margin-bottom:0}
+.dl-since{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:#8a867c;margin-top:8px;padding-left:2px;min-height:1em}
+.dl-since b{color:var(--gold);font-weight:600}
 .dl-badge .pulse{width:8px;height:8px;background:var(--gold);border-radius:50%;animation:pulse 1.6s infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(242,196,78,.5)}50%{box-shadow:0 0 0 7px rgba(242,196,78,0)}}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
@@ -634,7 +638,9 @@ img{max-width:100%}
   body{line-height:1.6}
   h1{min-height:0;font-size:clamp(30px,9vw,40px)}
   .sub{font-size:15.5px;margin:16px 0 18px}
-  .dl-badge{font-size:12px;padding:9px 12px;margin-bottom:20px}
+  .dl-badge{font-size:12px;padding:9px 12px}
+  .dl-wrap{margin-bottom:20px}
+  .dl-since{font-size:10.5px}
   .hero-cta .btn{flex:1 1 100%;justify-content:center}
   .win-body{font-size:11.5px;line-height:1.8;padding:14px;min-height:190px;overflow-x:auto}
   .mods,.feats,.why{grid-template-columns:1fr}
@@ -943,7 +949,7 @@ footer{padding:56px 0 30px}
       <p class="tag">FREE PORTABLE WINDOWS TOOLS · BUILT IN INDIA</p>
       <h1 id="scramble" data-text="We build what others forgot to fix.">We build what others forgot to fix.</h1>
       <p class="sub">Every app we build starts with a problem nobody else bothered to solve. Free portable Windows 10/11 software — an offline security suite, a batch image converter and a screen recorder &amp; snipping tool — with zero telemetry and no installer.</p>
-      <div class="dl-badge" id="dlBadge"><span class="pulse"></span> <span id="dlCount">1200</span>&nbsp;total downloads across all products</div>
+      <div class="dl-wrap"><div class="dl-badge" id="dlBadge"><span class="pulse"></span> <span id="dlCount">1200</span>&nbsp;total downloads across all products</div><div class="dl-since" id="dlSince" aria-live="polite"></div></div>
       <div class="hero-cta">
         <a class="btn" href="#products">View product lineup</a>
         <a class="btn ghost" href="#contact">Talk to the dev</a>
@@ -1523,6 +1529,30 @@ function loadDownloadCount(){
     })
     .catch(() => {});
 }
+
+/* ---------- "in N months" label (auto-updates, no extra files) ----------
+   Counts completed calendar months since launch using the visitor's clock.
+   Purely cosmetic: never touches DL_TOTAL or downloads.json. */
+(function(){
+  const el = document.getElementById('dlSince');
+  if(!el) return;
+  const LAUNCH = {y:2026, m:5, d:11}; /* Akhouri Systems founded May 11, 2026 */
+  const now = new Date();
+  let months = (now.getFullYear() - LAUNCH.y) * 12 + (now.getMonth() + 1 - LAUNCH.m);
+  if(now.getDate() < LAUNCH.d) months--;
+  let txt;
+  if(months >= 12){
+    const y = Math.floor(months / 12), m = months % 12;
+    txt = y + (y === 1 ? ' year' : ' years') + (m ? ' ' + m + (m === 1 ? ' month' : ' months') : '');
+  } else if(months >= 1){
+    txt = months + (months === 1 ? ' month' : ' months');
+  } else {
+    const days = Math.floor((now - new Date(LAUNCH.y, LAUNCH.m - 1, LAUNCH.d)) / 864e5);
+    if(days < 0) return;
+    txt = days <= 1 ? 'its first days' : days + ' days';
+  }
+  el.innerHTML = 'in <b>' + txt + '</b> since launch &middot; May 2026';
+})();
 
 /* ---------- hero terminal typing (waits for the live count) ---------- */
 loadDownloadCount().then(() => {
