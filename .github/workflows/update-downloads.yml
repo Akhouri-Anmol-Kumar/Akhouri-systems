@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: '17 * * * *'   # every hour at :17
   workflow_dispatch:
+  push:
+    paths:
+      - 'microsoft-downloads.json'   # recalculate right away when you edit the Store count
 
 permissions:
   contents: write
@@ -40,6 +43,16 @@ jobs:
           # Permanent correction: 105 real downloads lost when a repo was deleted/re-uploaded
           OFFSET=105
           TOTAL=$((TOTAL + OFFSET))
+
+          # Manual Microsoft Store count (sum of all apps), edited by hand in microsoft-downloads.json
+          MS=0
+          if [ -f microsoft-downloads.json ]; then
+            MS=$(jq -r '.count // 0' microsoft-downloads.json 2>/dev/null || echo 0)
+          fi
+          case "$MS" in ''|*[!0-9]*) MS=0 ;; esac
+          echo "GitHub+offset=$TOTAL, Microsoft Store=$MS"
+          TOTAL=$((TOTAL + MS))
+
           echo "total=$TOTAL" >> "$GITHUB_OUTPUT"
 
       - name: Write downloads.json
